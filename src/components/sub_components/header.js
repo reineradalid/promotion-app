@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Typography } from 'antd';
+import { PageHeader, Typography, Row, Col, Avatar} from 'antd';
 
 const { Paragraph } = Typography;
 
@@ -24,29 +24,12 @@ const content = (
       Ant Design interprets the color system into two levels: a system-level color system and a
       product-level color system.
     </Paragraph>
-    <Paragraph>
-      Ant Design&#x27;s design team preferred to design with the HSB color model, which makes it
-      easier for designers to have a clear psychological expectation of color when adjusting colors,
-      as well as facilitate communication in teams.
-    </Paragraph>
-    <p className="contentLink">
-      <a>
-        <img
-          src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg"
-          alt="start"
-        />
-        Quick Start
-      </a>
-      <a>
-        <img src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" alt="info" />
-        Product Info
-      </a>
-      <a>
-        <img src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" alt="doc" />
-        Product Doc
-      </a>
-    </p>
+    
   </div>
+);
+
+const user_info = (
+    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style={{backgroundColor: '#fff'}}/>
 );
 
 const extraContent = (
@@ -61,11 +44,11 @@ class HeadLord extends React.Component {
     render() {
    
         return (
-            <PageHeader title="Title" style={{border: '1px solid gray'}}>
-                <div className="wrap">
-                <div className="content">{content}</div>
-                <div className="extraContent">{extraContent}</div>
-                </div>
+            <PageHeader style={{maxHeight: '70px', marginBottom: '15px', backgroundColor: '#2c3e50'}}>
+                <Row>
+                    <Col span={22}><div className="content"></div></Col>
+                    <Col span={2}><div className="user_info">{user_info}</div></Col>
+                </Row>
             </PageHeader>
         );
       }
