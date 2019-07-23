@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 
@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
         return (
             <div>
                 <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
-                        style={{ minHeight: '100vh',  }} 
+                        style={{ minHeight: '100vh'  }} 
                         breakpoint="md"
                         collapsedWidth="80px"
                         onBreakpoint={broken => {
@@ -71,15 +71,10 @@ class Sidebar extends React.Component {
         );
     }
 }
-const style={
-  breakpoint:{
-    xs: '20px',
-    sm: '40px',
-    md: '80px',
-    lg: '160px',
-    xl: '256px',
 
-  },
+const style={
+ 
 }
+
 
 export default Sidebar;

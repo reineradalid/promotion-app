@@ -1,6 +1,7 @@
 import React from 'react';
 import HeadLord from './sub_components/header.js'
 import Sidebar from './sidebar.js'
+import Widget from './sub_components/widget.js'
 import { Menu, Breadcrumb, Icon, Layout, Row, Col} from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -36,6 +37,12 @@ class Dashboard extends React.Component {
                                     <div>Column</div>
                                 </Col>
                             </Row>
+                            <Row>
+                                <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
+                                    <Widget/>
+                                </div>
+                            </Row>
+                            
                             </div>
                         </div>
 
