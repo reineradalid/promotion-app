@@ -89,8 +89,8 @@ class Widget extends React.Component {
                   
                     >
                     {/* {contentList[this.state.key]} */}
-                    <div>
-                        <img style={{ maxHeight: '50vh' }} src={'https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'} />
+                    <div >
+                        <img style={{width:'100%'}} src={'https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'} />
                     </div>
                     <div style={{margin:20}}>
                         <div style={{textAlign:'left', color:'gray', fontSize:15}}>
