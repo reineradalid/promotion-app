@@ -1,48 +1,51 @@
 import React from 'react';
-import Header from './sub_components/header.js'
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-  PageHeader, 
-  Typography
+import HeadLord from './sub_components/header.js'
+import Sidebar from './sidebar.js'
+import { Menu, Breadcrumb, Icon, Layout
 } from 'antd';
+
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
 class Dashboard extends React.Component {
 
     render() {
    
         return (
-            <div class="row">
-                {/* SIDEBAR HERE */}
-                <div class="col-12">
-                    <Header />
-                    <div class="container">
-                    <Row gutter={8}>
-                        <Col span={6}>
-                            <div>Column</div>
-                        </Col>
-                        <Col span={6}>
-                            <div>Column</div>
-                        </Col>
-                        <Col span={6}>
-                            <div>Column</div>
-                        </Col>
-                        <Col span={6}>
-                            <div>Column</div>
-                        </Col>
-                    </Row>
-                    </div>
-                </div>
-            </div>
+
+            <Layout style={{ minHeight: '100vh' }}>
+                
+                <Sidebar />
+                <Layout>
+                    <HeadLord style={{ background: '#fff', padding: 0 }} />
+                </Layout>
+            </Layout>
+            
+            // <Layout>
+            // <div class="row">
+            //     {/* SIDEBAR HERE */}
+            //     
+            //     <div class="col-12">
+            //         {/* <HeadLord/> */}
+            //         <div class="container">
+            //         {/* <Row gutter={8}>
+            //             <Col span={6}>
+            //                 <div>Column</div>
+            //             </Col>
+            //             <Col span={6}>
+            //                 <div>Column</div>
+            //             </Col>
+            //             <Col span={6}>
+            //                 <div>Column</div>
+            //             </Col>
+            //             <Col span={6}>
+            //                 <div>Column</div>
+            //             </Col>
+            //         </Row> */}
+            //         </div>
+            //     </div>
+            // </div>
+            // </Layout>
         );
       }
 }

@@ -56,7 +56,7 @@ const extraContent = (
   />
 );
 
-class Header extends React.Component {
+class HeadLord extends React.Component {
 
     render() {
    
@@ -71,4 +71,4 @@ class Header extends React.Component {
       }
 }
     
-export default Header;
+export default HeadLord;
