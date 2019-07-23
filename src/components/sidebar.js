@@ -19,8 +19,13 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} style={{ minHeight: '100vh' }}>
-                  <div className="logo" />
+                <Sider style={{ minHeight: '100vh',  }} 
+                        breakpoint="md"
+                        collapsedWidth="80px"
+                        onBreakpoint={broken => {
+                          console.log(broken);
+                        }}>
+                   <div className="logo"  />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                       <Menu.Item key="1">
                       <Icon type="pie-chart" />
@@ -64,6 +69,16 @@ class Sidebar extends React.Component {
           </div>
         );
     }
+}
+const style={
+  breakpoint:{
+    xs: '20px',
+    sm: '40px',
+    md: '80px',
+    lg: '160px',
+    xl: '256px',
+
+  },
 }
 
 export default Sidebar;
