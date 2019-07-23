@@ -6,20 +6,20 @@ const { SubMenu } = Menu;
 
 
 class Sidebar extends React.Component {
-    state = {
-        collapsed: false,
-      };
-    
-      toggleCollapsed = () => {
-        this.setState({
-          collapsed: !this.state.collapsed,
-        });
-      };
-    
+  state = {
+    collapsed: false,
+  };
+
+  onCollapse = collapsed => {
+    console.log(collapsed);
+    this.setState({ collapsed });
+  };
+
     render() {
         return (
             <div>
-                <Sider style={{ minHeight: '100vh',  }} 
+                <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
+                        style={{ minHeight: '100vh',  }} 
                         breakpoint="md"
                         collapsedWidth="80px"
                         onBreakpoint={broken => {
@@ -65,6 +65,7 @@ class Sidebar extends React.Component {
                     <span>File</span>
                   </Menu.Item>
                   </Menu>
+                
               </Sider>
           </div>
         );
