@@ -81,9 +81,6 @@ const style={
   },
 }
 
-const style={
- 
-}
 
 
 export default Sidebar;
