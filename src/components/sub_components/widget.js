@@ -8,22 +8,29 @@ import {Card,
         Form,
         Input,
         Checkbox,
-        Button} from 'antd';
+        Button,
+        Popconfirm
+      } from 'antd';
 import Signup from './signup.js';
 
 
 
-  const contentList = {
-    tab1: <p>content1</p>,
-    tab2:<Signup/>,
-  };
+  
+  const EditableContext = React.createContext();
+
+  const EditableRow = ({ form, index, ...props }) => (
+    <EditableContext.Provider value={form}>
+      <tr {...props} />
+    </EditableContext.Provider>
+  );
+
+  const EditableFormRow = Form.create()(EditableRow);
 
   
 class Widget extends React.Component {
     state = {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
-        visibles: false,
         key: 'tab1',
         noTitleKey: 'app',
         icon:'close-circle',
@@ -45,7 +52,62 @@ class Widget extends React.Component {
                 id:4,
                 des:'Download App',
             }
-          ]
+          ],
+        steps:[
+          {
+            key:1,
+            des:'Sign up or signin',
+            act:this.showModal,
+            icon:'close-circle',
+            
+          },
+          {
+            key:2,
+            des:'follow',
+            act:   this.iconchange = () => {
+       
+              this.state.icon == 'close-circle' ?  
+              this.setState({ icon: 'check-circle' }) 
+              :  
+               this.setState({ icon: 'close-circle' });
+             
+            },
+            icon:'close-circle',
+          },
+          {
+            key:3,
+            des:'test',
+            act:   this.iconchange = () => {
+       
+              this.state.icon == 'close-circle' ?  
+              this.setState({ icon: 'check-circle' }) 
+              :  
+               this.setState({ icon: 'close-circle' });
+             
+            },
+            icon:'close-circle',
+          },
+          {
+            key:4,
+            des:'test',
+            act: this.showModal = () => {
+              this.setState({
+                visible: true,
+              });
+            },
+            icon:'close-circle',
+          },
+          {
+            key:5,
+            des:'test',
+            act: this.showModal = () => {
+              this.setState({
+                visible: true,
+              });
+            },
+            icon:'close-circle',
+          }
+        ]
       };
     
       onTabChange = (key, type) => {
@@ -53,23 +115,21 @@ class Widget extends React.Component {
         this.setState({ [type]: key });
       };
 
-      iconchange = () => {
-        // if(this.state.icon == 'close-circle') {
-        //     this.setState({ icon: 'check-circle' });
-        // }else{
-        //     this.setState({ icon: 'close-circle' });
-        // }
-        this.state.icon == 'close-circle' ?  
-        this.setState({ icon: 'check-circle' }) 
-        :  
-         this.setState({ icon: 'close-circle' });
+      // iconchange = () => {
        
-      };
-      showModal = () => {
+      //   this.state.icon == 'close-circle' ?  
+      //   this.setState({ icon: 'check-circle' }) 
+      //   :  
+      //    this.setState({ icon: 'close-circle' });
+       
+      // };
+        showModal = () => {
         this.setState({
           visible: true,
         });
       };
+
+    
      
      
       handleCancel = e => {
@@ -111,43 +171,31 @@ class Widget extends React.Component {
                             )}                          
                         </div>
                     </div>
-                    <a  onClick={this.showModal}>
-                        <div style={{marginBottom:10}}>      
-                            <Row  type="flex" justify="space-around" align="middle"  style={{border:'1px solid black',borderRadius:10 }}>
-                                <Col span={20}><h2 style={{ float:'left', marginLeft:20}}>Sign In</h2></Col>
-                                <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>
-                            </Row>
-                        </div>  
-                    </a>
-                    <a onClick={()=>{this.iconchange() }}>
-                        <div style={{marginBottom:10}}>
-                            <Row  type="flex" justify="space-around" align="middle" style={{border:'1px solid black',borderRadius:10}}>
-                                <Col  span={20}><h2 style={{float:'left', marginLeft:20}}>Follow us </h2></Col>
-                                <Col  style={{float:'right'}} span={2}><Icon  style={{fontSize:20, float:'right'}} type={this.state.icon}/></Col>
-                            </Row>
+                    <div style={{marginBottom:10}}>
+                        <div style={{textAlign:'left', color:'gray'}}>
+                            {this.items = this.state.steps.map((item, key) =>
+                            <a  onClick={item.act}>
+                              <div style={{marginBottom:10}}>  
+                                <Row   key={item.key} type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   key={item.key} span={20}><h2 style={{ float:'left', marginLeft:20}}>{item.des} </h2></Col> 
+                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                </Row>
+                              </div>
+                            </a>
+                            )}                          
                         </div>
-                    </a>
-                    <a onClick={()=>{this.iconchange() }}>
-                        <div style={{marginBottom:10}}>
-                            <Row  type="flex" justify="space-around" align="middle" style={{border:'1px solid black',borderRadius:10}}>
-                                <Col span={20}><h2 style={{ float:'left', marginLeft:20}}>Download our App</h2></Col>
-                                <Col  style={{float:'right'}}  span={2}><Icon  style={{fontSize:20, float:'right'}}type={this.state.icon} /></Col>
-                            </Row>
-                        </div>
-                    </a>
-                    
+                    </div>
+                     
+                  
+                   
                 </Card>
                 </Layout>
                 <Modal
-                   
                     visible={this.state.visible}
                     // onOk={this.handleOk}
-                   onCancel={this.handleCancel}
-                    footer={[
-                      null,
-                      null,
-                    ]}
-                    style={{ maxHeight: '20vh',
+                    onCancel={this.handleCancel}
+                    footer={null}
+                    style={{ maxHeight: '10vh',
                             maxWidth:'40vh' }}
                     >
                     
@@ -187,6 +235,8 @@ class Widget extends React.Component {
                       <Form.Item style={{float:'right', marginTop:-30}}>
                           Or <a href=""> register now!</a>
                       </Form.Item>
+                      
+                      
                     </Form>
                     
                 </Modal>
