@@ -1,7 +1,7 @@
 import React from 'react';
 import HeadLord from './sub_components/header.js'
 import Sidebar from './sidebar.js'
-import { Menu, Breadcrumb, Icon, Layout, Row, Col} from 'antd';
+import { Menu, Breadcrumb, Icon, Layout, Row, Col, Statistic} from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -22,18 +22,18 @@ class Dashboard extends React.Component {
                         <div class="col-12">
                             {/* <HeadLord/> */}
                             <div class="container">
-                            <Row gutter={8}>
-                                <Col span={6}>
-                                    <div>Column</div>
+                            <Row gutter={10}>
+                                <Col span={4} style={{backgroundColor: '#2ecc71', padding: '15px', borderRadius: '5px'}}>
+                                    <Statistic style={{color: '#fff'}}title="Active Promotion" value={10} prefix={<Icon type="notification" />} />
                                 </Col>
-                                <Col span={6}>
-                                    <div>Column</div>
+                                <Col span={4}>
+                                    <Statistic title="Total Users" value={1128} prefix={<Icon type="user" />} />
                                 </Col>
-                                <Col span={6}>
-                                    <div>Column</div>
+                                <Col span={4}>
+                                    <Statistic title="Unmerged" value={93} suffix="/ 100" />
                                 </Col>
-                                <Col span={6}>
-                                    <div>Column</div>
+                                <Col span={4}>
+                                    <Statistic title="Unmerged" value={93} suffix="/ 100" />
                                 </Col>
                             </Row>
                             </div>
