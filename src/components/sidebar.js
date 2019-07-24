@@ -23,7 +23,6 @@ class Sidebar extends React.Component {
                         breakpoint="md"
                         collapsedWidth="80px"
                         onBreakpoint={broken => {
-                          
                         }}>
                    <div className="logo"  />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -70,6 +69,16 @@ class Sidebar extends React.Component {
           </div>
         );
     }
+}
+const style={
+  breakpoint:{
+    xs: '20px',
+    sm: '40px',
+    md: '80px',
+    lg: '160px',
+    xl: '256px',
+
+  },
 }
 
 const style={
