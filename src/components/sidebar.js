@@ -11,21 +11,18 @@ class Sidebar extends React.Component {
   };
 
   onCollapse = collapsed => {
-   
+    console.log(collapsed);
     this.setState({ collapsed });
   };
 
     render() {
         return (
             <div>
-
                 <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
-                        style={{ minHeight: '100vh' }} 
+                        style={{ minHeight: '100vh'  }} 
                         breakpoint="md"
                         collapsedWidth="80px"
                         onBreakpoint={broken => {
-                         
-
                         }}>
                    <div className="logo"  />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
