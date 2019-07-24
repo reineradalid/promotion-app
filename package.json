@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "antd": "^3.20.5",
+    "js-cookie": "^2.2.0",
     "parse": "^2.5.1",
     "react": "^16.8.6",
+    "react-cookie": "^4.0.1",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
   },
