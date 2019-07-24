@@ -1,8 +1,8 @@
 import React from 'react';
 import HeadLord from './sub_components/header.js'
 import Sidebar from './sidebar.js'
-import { Menu, Breadcrumb, Icon, Layout, Row, Col, Statistic} from 'antd';
-import getRecord from './backend/crud.js';
+import { Menu, Button, Icon, Layout, Row, Col, Statistic} from 'antd';
+import mod from './backend/crud.js';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Statistic title="Unmerged" value={93} suffix="/ 100" />
-                                    <Button title="TEST" onClick={getRecord} />
+                                    <Button onClick={mod.getRecord} />
                                 </Col>
                             </Row>
                             </div>
