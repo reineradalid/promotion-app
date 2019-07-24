@@ -1,29 +1,31 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 
 class Sidebar extends React.Component {
-    state = {
-        collapsed: false,
-      };
-    
-      toggleCollapsed = () => {
-        this.setState({
-          collapsed: !this.state.collapsed,
-        });
-      };
-    
+  state = {
+    collapsed: false,
+  };
+
+  onCollapse = collapsed => {
+   
+    this.setState({ collapsed });
+  };
+
     render() {
         return (
             <div>
-                <Sider style={{ minHeight: '100vh',  }} 
+
+                <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
+                        style={{ minHeight: '100vh' }} 
                         breakpoint="md"
                         collapsedWidth="80px"
                         onBreakpoint={broken => {
-                          console.log(broken);
+                         
+
                         }}>
                    <div className="logo"  />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -65,6 +67,7 @@ class Sidebar extends React.Component {
                     <span>File</span>
                   </Menu.Item>
                   </Menu>
+                
               </Sider>
           </div>
         );
@@ -80,5 +83,10 @@ const style={
 
   },
 }
+
+const style={
+ 
+}
+
 
 export default Sidebar;
