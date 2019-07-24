@@ -2,6 +2,7 @@ import React from 'react';
 import HeadLord from './sub_components/header.js'
 import Sidebar from './sidebar.js'
 import { Menu, Breadcrumb, Icon, Layout, Row, Col, Statistic} from 'antd';
+import getRecord from './backend/crud.js';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
