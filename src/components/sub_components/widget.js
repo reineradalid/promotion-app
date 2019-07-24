@@ -129,6 +129,17 @@ class Widget extends React.Component {
         });
       };
 
+      // handleSignIn(e) {
+      //   e.preventDefault()
+      //   if{
+      //     this.username = this.refs.username.value
+      //     password = this.refs.password.value
+
+      //   } 
+        
+      //   this.props.onSignIn(username, password)
+      // }
+
     
      
      
@@ -199,7 +210,7 @@ class Widget extends React.Component {
                             maxWidth:'40vh' }}
                     >
                     
-                    <Form onSubmit={this.handleSubmit} className="login-form" style={{width: '100%', alignItems:'center', justifyContent:'center',marginTop:50}}>
+                    <Form  onSubmit={this.handleSignIn.bind(this)} className="login-form" style={{width: '100%', alignItems:'center', justifyContent:'center',marginTop:50}}>
                       <Form.Item >
                       
                           <Input
