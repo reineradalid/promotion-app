@@ -123,16 +123,16 @@ pickRand = () => {
 
             <div style={{margin:2, backgroundColor:'#fff', padding:10, borderRadius:10}}>
                 <Row>
-                    
+
                     <Button onClick={this.pickRand} style={{float:'right', margin:10}} type="primary">Random Pick</Button>
                 </Row>
                
                 {this.state.fullname}
                 <Table bordered  dataSource={data} scroll={{y:'50vh'}} >
-                    <Column  align='center' colSpan={0} title="First Name" dataIndex="firstName" key="firstName" />
-                    <Column  align='center' colSpan={5} title="Last Name" dataIndex="lastName" key="lastName" />
-                    <Column  align='center' colSpan={5} title="Email" dataIndex="email" key="email" />
-                    <Column  align='center' colSpan={5} title="Mobile" dataIndex="mobile" key="mobile" />
+                    <Column  align='center' colSpan={3} title="First Name" dataIndex="firstName" key="firstName" />
+                    <Column  align='center' colSpan={3} title="Last Name" dataIndex="lastName" key="lastName" />
+                    <Column  align='center' colSpan={3} title="Email" dataIndex="email" key="email" />
+                    <Column  align='center' colSpan={3} title="Mobile" dataIndex="mobile" key="mobile" />
                     <Column
                      align='center' 
                     colSpan={4} 

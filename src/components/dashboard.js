@@ -40,21 +40,22 @@ class Dashboard extends React.Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col span={14}>
+                                <Col span={20}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
                                         <Entrylist/>
                                     </div>
                                 </Col>
-                                <Col span={8}>
-                                    <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
-                                        <Signup/>
-                                    </div>
-                                </Col>
+                                
                             </Row>
                             <Row>
                                 <Col span={14}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
                                         <Widget/>
+                                    </div>
+                                </Col>
+                                <Col span={8}>
+                                    <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
+                                        <Signup/>
                                     </div>
                                 </Col>
                                 
