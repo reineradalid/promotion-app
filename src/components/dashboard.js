@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
                 <Sidebar />
                 <Layout>
                     <HeadLord />
-
+                    
                     <Row>
                         <div class="col-12">
                             {/* <HeadLord/> */}
@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Statistic title="Unmerged" value={93} suffix="/ 100" />
+                                    <Button title="TEST" onClick={getRecord} />
                                 </Col>
                             </Row>
                             </div>
