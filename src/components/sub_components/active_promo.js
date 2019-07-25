@@ -11,7 +11,7 @@ const Items = null;
 class active_list extends React.Component {
 
     componentWillMount() {
-        Items = getRecord();    
+        // Items = getRecord();    
     }
 
     render() {
