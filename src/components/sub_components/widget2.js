@@ -52,6 +52,10 @@ class Widget2 extends React.Component {
         fbLikeicon:'close-circle',
         downloadIcon:'close-circle',
         title:'Giveaways',
+        scolor:'red',
+        dcolor:'red',
+        sgcolor:'red',
+        lcolor:'red',
         description:[
             {
               id:1,
@@ -99,14 +103,22 @@ class Widget2 extends React.Component {
       fbLike =() =>{
         this.state.fbLikeicon == 'close-circle' ?  
         this.setState({ fbLikeicon: 'check-circle' }) 
-        :  
-         this.setState({ fbLikeicon: 'close-circle' });
+        :
+        console.log('done')
+        this.state.lcolor == 'red' ?  
+        this.setState({ lcolor: '#428bca' }) 
+        :
+        console.log('done')
       }
       fbshare =() =>{
         this.state.fbshareicon == 'close-circle' ?  
         this.setState({ fbshareicon: 'check-circle' }) 
-        :  
-         this.setState({ fbshareicon: 'close-circle' });
+        :
+       console.log('done')
+       this.state.scolor == 'red' ?  
+       this.setState({ scolor: '#428bca' }) 
+       :
+       console.log('done')
       }
 
 
@@ -129,16 +141,15 @@ class Widget2 extends React.Component {
       }
       
       
-      download =(event) =>{
-        event.preventDefault();
-       console.log(this.state.dlLink)
-      
-     
-  
-        // this.state.downloadIcon == 'close-circle' ?  
-        // this.setState({ downloadIcon: 'check-circle' }) 
-        // :  
-        //  this.setState({ downloadIcon: 'close-circle' });
+      download =() =>{
+        this.state.downloadIcon == 'close-circle' ?  
+        this.setState({ downloadIcon: 'check-circle' }) 
+       :
+       console.log('done')
+       this.state.dcolor == 'red' ?  
+       this.setState({ dcolor: '#428bca' }) 
+       :
+       console.log('done')
       }
 
     
@@ -190,18 +201,18 @@ class Widget2 extends React.Component {
                               <a>
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
-                                    <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.icon} /></Col>               
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign up </h2></Col> 
+                                      <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.sgcolor }}  type={this.state.icon} /></Col>               
                                   </Row>
                                 </div>
                               </a>
-                              <a href={this.state.dlLink} onClick={this.download}>
+                              <a href={this.state.dlLink} target="_blank" onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
-                                    <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.downloadIcon} /></Col>               
+                                      <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dcolor }}  type={this.state.downloadIcon} /></Col>               
                                   </Row>
                                   </div>
                                 </a>
@@ -209,8 +220,8 @@ class Widget2 extends React.Component {
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
-                                    <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}}  type={this.state.fbLikeicon} /></Col>               
+                                      <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20, color:this.state.lcolor }}  type={this.state.fbLikeicon} /></Col>               
                                   </Row>
                                   </div>
                                 </a>
@@ -218,8 +229,8 @@ class Widget2 extends React.Component {
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
-                                    <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}} type={this.state.fbshareicon}/></Col>               
+                                      <Divider type="vertical" />
+                                    <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, color:this.state.scolor }} type={this.state.fbshareicon}/></Col>               
                                   </Row>
                                 </div>
                                 </a>
