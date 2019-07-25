@@ -10,7 +10,8 @@ import {Card,
         Checkbox,
         Button,
         Popconfirm,
-        Divider
+        Divider,
+        Drawer
       } from 'antd';
 import {
         BrowserView,
@@ -36,9 +37,11 @@ import Signup from './signup.js';
 
   
 class Widget2 extends React.Component {
-    state = {
+
+     	state = {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        visible: false,
+				visible: false,
+				visible_drawer: false,
         key: 'tab1',
         dlLink:'',
         noTitleKey: 'app',
@@ -128,15 +131,24 @@ class Widget2 extends React.Component {
         //  this.setState({ downloadIcon: 'close-circle' });
       }
 
-    
-     
-     
       handleCancel = e => {
         console.log(e);
         this.setState({
           visible: false,
         });
-      };
+			};
+			
+			showDrawer = () => {
+				this.setState({
+					visible_drawer: true,
+				});
+			};
+
+			onClose = () => {
+				this.setState({
+					visible_drawer: false,
+				});
+			};
   
     render() {
         return (
@@ -174,7 +186,7 @@ class Widget2 extends React.Component {
                       <div style={{marginBottom:10}}>
                           <div style={{textAlign:'left', color:'gray'}}>
                             
-                              <a>
+                              <a onClick={this.showDrawer}>
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
@@ -264,10 +276,29 @@ class Widget2 extends React.Component {
                       </Form.Item>   
                     </Form>
                     
-                </Modal>              
-            </div>
+                </Modal>
 
+								<Drawer title="Create a new account" width={720} onClose={this.onClose}visible={this.state.visible_drawer}>
+									<div
+										style={{
+											position: 'absolute',
+											left: 0,
+											top: 0,
+											width: '100%',
+											padding: '10px 16px',
+											background: '#fff',
+											textAlign: 'right',
+										}}
+									>
 
+										<Col align="middle" type="flex" justify="center">
+											
+											<Signup />
+										</Col>
+									</div>
+							</Drawer>
+
+						</div>
 
 
 
