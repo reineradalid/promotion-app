@@ -124,20 +124,19 @@ class Widget2 extends React.Component {
 
       componentDidMount(){
         if (isMobile) {
-          if(isAndroid){
-            this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
-            console.log(this.state.dlLink)
-          }else{
-            console.log('ios')
-            this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
-          }
-          console.log('mobile')     
-      }else{
-        
-        this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
-        console.log(this.state.dlLink)
-      }
-
+            if(isAndroid){
+              this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
+              console.log(this.state.dlLink)
+            }else{
+              console.log('ios')
+              this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
+            }
+            console.log('mobile')     
+        }else{
+          
+          this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
+          console.log(this.state.dlLink)
+        }
       }
       
       
@@ -151,10 +150,7 @@ class Widget2 extends React.Component {
        :
        console.log('done')
       }
-
-    
-     
-     
+        
       handleCancel = e => {
         console.log(e);
         this.setState({
