@@ -10,7 +10,8 @@ import {Card,
         Checkbox,
         Button,
         Popconfirm,
-        Divider
+        Divider,
+        Alert
       } from 'antd';
 import {
         BrowserView,
@@ -56,65 +57,109 @@ class Widget2 extends React.Component {
         dcolor:'red',
         sgcolor:'red',
         lcolor:'red',
+        disable:true,
+        opacity:.7,
+        entries:[
+          {
+            id:'1',
+            name:'',
+            action:'',
+          },
+         
+        ],
         description:[
           {
-            id:1,
+            key:1,
             des: 'Sign in/ Signup',
           },
           {
-              id:2,
+              key:2,
             des: 'Like and Share our page',
           },
           {
-              id:3,
+              key:3,
             des:'Like and Share the post',
           },
           {
-              id:4,
+              key:4,
               des:'Download App',
           }
         ], 
       };
   }
+
+  componentDidMount(){
+    if (isMobile) {
+        if(isAndroid){
+          this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
+          console.log(this.state.dlLink)
+        }else{
+          console.log('ios')
+          this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
+        }
+        console.log('mobile')     
+    }else{
+      
+      this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
+      console.log(this.state.dlLink)
+    }
+
+  
+  }
     
-      onTabChange = (key, type) => {
+      change = () => {
        
-        this.setState({ [type]: key });
+        this.setState({ opacity: 1 });
+        this.setState({ disable:false });
+
       };
 
-      iconchange = () => {
-       
-        this.state.icon == 'close-circle' ?  
-        this.setState({ icon: 'check-circle' }) 
-        :  
-         this.setState({ icon: 'close-circle' });
-       
-      };
         showModal = () => {
         this.setState({
           visible: true,
         });
       };
 
-      // handleSignIn(e) {
-      //   e.preventDefault()
-      //   this.props.onSignIn(username, password)
-      // }
+     
       fbLike =() =>{
-        this.state.fbLikeicon == 'close-circle' ?  
-        this.setState({ fbLikeicon: 'check-circle' }) 
-        :
-        console.log('done')
-        this.state.lcolor == 'red' ?  
-        this.setState({ lcolor: '#428bca' }) 
-        :
-        console.log('done')
+        if(this.state.disable == true){
+         console.log("Please Sign up")
+        }else{
+          var newArr = this.state.entries;
+        
+          newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test'});
+         
+          this.setState({some:'val',entries:newArr})
+          console.log(this.state.entries)
+  
+          this.state.fbLikeicon == 'close-circle' ?  
+          this.setState({ fbLikeicon: 'check-circle' }) 
+          :
+          console.log('done')
+  
+          this.state.lcolor == 'red' ?  
+          this.setState({ lcolor: '#428bca' }) 
+          :
+          console.log('done')
+
+        }
+       
+      
       }
+
       fbshare =() =>{
+        var newArr = this.state.entries;
+        
+        newArr.push({ 'name': " test ", 'action':"Share" ,'email': 'test@test'});
+       
+        this.setState({some:'val',entries:newArr})
+        console.log(this.state.entries)
+        
         this.state.fbshareicon == 'close-circle' ?  
         this.setState({ fbshareicon: 'check-circle' }) 
         :
        console.log('done')
+
        this.state.scolor == 'red' ?  
        this.setState({ scolor: '#428bca' }) 
        :
@@ -122,25 +167,18 @@ class Widget2 extends React.Component {
       }
 
 
-      componentDidMount(){
-        if (isMobile) {
-            if(isAndroid){
-              this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
-              console.log(this.state.dlLink)
-            }else{
-              console.log('ios')
-              this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
-            }
-            console.log('mobile')     
-        }else{
-          
-          this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
-          console.log(this.state.dlLink)
-        }
-      }
+     
       
       
       download =() =>{
+
+        var newArr = this.state.entries;
+        
+        newArr.push({ 'name': " test ", 'action':"Download" ,'email': 'test@test'});
+       
+        this.setState({some:'val',entries:newArr})
+        console.log(this.state.entries)
+
         this.state.downloadIcon == 'close-circle' ?  
         this.setState({ downloadIcon: 'check-circle' }) 
        :
@@ -161,7 +199,7 @@ class Widget2 extends React.Component {
     render() {
         return (
             <div  style={{ flex:1, alignItems:'center', justifyContent:'center ', overflowY:'hidden'}} id='cardH'>
-              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:50,marginBottom:50, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
+              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:50,marginBottom:50, marginLeft:5, marginRight:5, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
                 <Col  type="flex" justify="center" align="middle">
                   <Card
                       style={{ alignItems:'center', 
@@ -187,7 +225,7 @@ class Widget2 extends React.Component {
                       <div style={{margin:20}}>
                           <div style={{textAlign:'left', color:'gray', fontSize:15}}>
                               {this.items = this.state.description.map((item, key) =>
-                                  <li key={item.id}>&bull; {item.des}</li>
+                                  <li key={item.key}>&bull; {item.des}</li>
                               )}                          
                           </div>
                       </div>
@@ -196,40 +234,43 @@ class Widget2 extends React.Component {
                             
                               <a>
                                 <div style={{marginBottom:10}}>  
-                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign up </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.sgcolor }}  type={this.state.icon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.sgcolor,  }}  type={this.state.icon} /></Col>               
                                   </Row>
                                 </div>
                               </a>
-                              <a href={this.state.dlLink} target="_blank" onClick={this.download}>
+                              <a   disabled={this.state.disable}  href={this.state.dlLink} target="_blank" onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
-                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dcolor }}  type={this.state.downloadIcon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dcolor, opacity:this.state.opacity }}  type={this.state.downloadIcon} /></Col>               
                                   </Row>
                                   </div>
                                 </a>
-                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}>
+                                <a disabled={this.state.disable} href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}> 
+                                
                                   <div style={{marginBottom:10}}>  
-                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 ,  opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20, color:this.state.lcolor }}  type={this.state.fbLikeicon} /></Col>               
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20, color:this.state.lcolor , opacity:this.state.opacity}}  type={this.state.fbLikeicon} /></Col>               
                                   </Row>
                                   </div>
                                 </a>
-                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbshare}>
+                                <a disabled={this.state.disable}  href="https://www.facebook.com/JobStreamApp.Philippines"  target='_blank' onClick={this.fbshare}>
+                                
                                 <div style={{marginBottom:10}}>  
-                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5,  opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, color:this.state.scolor }} type={this.state.fbshareicon}/></Col>               
+                                    <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, color:this.state.scolor,  opacity:this.state.opacity}} type={this.state.fbshareicon}/></Col>               
                                   </Row>
                                 </div>
                                 </a>
+                                <Button onClick={this.change} type="primary">Click</Button>
                                             
                           </div>
                       </div>        
