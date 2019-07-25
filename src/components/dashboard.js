@@ -5,11 +5,20 @@ import Sidebar from './sidebar.js'
 import {Button, Icon, Layout, Row, Col, Statistic} from 'antd';
 
 import Active_list from './sub_components/active_promo.js';
-import mod from './backend/crud.js';
+import {getRecord, testing} from './backend/crud.js';
+import { configConsumerProps } from 'antd/lib/config-provider';
 // import { useCookies } from 'react-cookie';
 
 
 class Dashboard extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
+
+    
     
     render() {
    
@@ -37,13 +46,13 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Statistic title="Unmerged" value={93} suffix="/ 100" />
-                                    <Button onClick={mod.getRecord} />
+                                    <Button type="primary" onClick={() => test()}>Primary</Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col span={8}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
-                                    < Active_list/>
+                                    {/* < Active_list/> */}
                                     </div>
                                 </Col>
                                 
@@ -67,14 +76,23 @@ class Dashboard extends React.Component {
 
                     </Row>
                 </Layout>
-
-                   
-
             </Layout>
             
             
         );
       }
+}
+
+function test(){
+    getRecord().then(data=>{
+      console.log(data);
+ 
+      //or set in state
+    //   this.setState({result:data})
+
+    //   console.log(JSON.stringify(this.state.result))
+
+    });
 }
 
 

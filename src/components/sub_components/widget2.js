@@ -9,8 +9,16 @@ import {Card,
         Input,
         Checkbox,
         Button,
-        Popconfirm
+        Popconfirm,
+        Divider
       } from 'antd';
+import {
+        BrowserView,
+        MobileView,
+        isBrowser,
+        isMobile,
+        isAndroid
+      } from "react-device-detect";
 import Signup from './signup.js';
 
 
@@ -32,8 +40,13 @@ class Widget2 extends React.Component {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
         key: 'tab1',
+        dlLink:'',
         noTitleKey: 'app',
         icon:'close-circle',
+        fbLikeicon:'close-circle',
+        fbshareicon:'close-circle',
+        fbLikeicon:'close-circle',
+        downloadIcon:'close-circle',
         title:'Giveaways',
         description:[
             {
@@ -80,6 +93,40 @@ class Widget2 extends React.Component {
       //   e.preventDefault()
       //   this.props.onSignIn(username, password)
       // }
+      fbLike =() =>{
+        this.state.fbLikeicon == 'close-circle' ?  
+        this.setState({ fbLikeicon: 'check-circle' }) 
+        :  
+         this.setState({ fbLikeicon: 'close-circle' });
+      }
+      fbshare =() =>{
+        this.state.fbshareicon == 'close-circle' ?  
+        this.setState({ fbshareicon: 'check-circle' }) 
+        :  
+         this.setState({ fbshareicon: 'close-circle' });
+      }
+      
+      download =() =>{
+        if (isMobile) {
+          // this.setState({ dlLink: 'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })
+          // this.state.downloadIcon == 'close-circle' ?  
+          // this.setState({ downloadIcon: 'check-circle' }) 
+          // :  
+          // this.setState({ downloadIcon: 'close-circle' });
+          console.log('mobile')
+
+          // return <div> This content is unavailable on mobile</div>
+      }else{
+        console.log('web')
+
+      }
+     
+  
+        // this.state.downloadIcon == 'close-circle' ?  
+        // this.setState({ downloadIcon: 'check-circle' }) 
+        // :  
+        //  this.setState({ downloadIcon: 'close-circle' });
+      }
 
     
      
@@ -93,75 +140,83 @@ class Widget2 extends React.Component {
   
     render() {
         return (
-            <div style={{marginLeft:2}} id='cardH'>
-                <Layout  >
-                <Card
-                    style={{ alignItems:'center', 
-                            justifyContent:'center', 
-                            width:'100%', 
-                            borderRadius:10,
-                            maxHeight: '200vh',
-                            maxWidth:'60vh' 
-                            }}
-                            title={<h1 style={{fontSize:25}}>{this.state.title}</h1>}
-                    // tabList={tabList}
-                    activeTabKey={this.state.key}
-                    onTabChange={key => {
-                        this.onTabChange(key, 'key');
-                    }}
-                  
-                    >
-                    {/* {contentList[this.state.key]} */}
-                    {/* <Signup/> */}
-                    <div >
-                        <img style={{width:'100%'}} src={this.state.img} />
-                    </div>
-                    <div style={{margin:20}}>
-                        <div style={{textAlign:'left', color:'gray', fontSize:15}}>
-                            {this.items = this.state.description.map((item, key) =>
-                                <li key={item.id}>&bull; {item.des}</li>
-                            )}                          
-                        </div>
-                    </div>
-                    <div style={{marginBottom:10}}>
-                        <div style={{textAlign:'left', color:'gray'}}>
-                           
-                            <a  >
-                              <div style={{marginBottom:10}}>  
-                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
-                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
-                                </Row>
-                                </div>
+            <div  style={{ flex:1, alignItems:'center', justifyContent:'center ', overflowY:'hidden'}} id='cardH'>
+              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:30,marginBottom:30, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
+                <Col  type="flex" justify="center" align="middle">
+                  <Card
+                      style={{ alignItems:'center', 
+                              justifyContent:'center', 
+                              width:'100%', 
+                              borderRadius:10,
+                              maxHeight: '200vh',
+                              maxWidth:'60vh' 
+                              }}
+                              title={<h1 style={{fontSize:25}}>{this.state.title}</h1>}
+                      // tabList={tabList}
+                      activeTabKey={this.state.key}
+                      onTabChange={key => {
+                          this.onTabChange(key, 'key');
+                      }}
+                    
+                      >
+                      {/* {contentList[this.state.key]} */}
+                      {/* <Signup/> */}
+                      <div >
+                          <img style={{width:'100%'}} src={this.state.img} />
+                      </div>
+                      <div style={{margin:20}}>
+                          <div style={{textAlign:'left', color:'gray', fontSize:15}}>
+                              {this.items = this.state.description.map((item, key) =>
+                                  <li key={item.id}>&bull; {item.des}</li>
+                              )}                          
+                          </div>
+                      </div>
+                      <div style={{marginBottom:10}}>
+                          <div style={{textAlign:'left', color:'gray'}}>
+                            
+                              <a>
                                 <div style={{marginBottom:10}}>  
-                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
-                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
-                                </Row>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.icon} /></Col>               
+                                  </Row>
                                 </div>
+                              </a>
+                              <a    onClick={this.download}>
+                                  <div style={{marginBottom:10}}>  
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.downloadIcon} /></Col>               
+                                  </Row>
+                                  </div>
+                                </a>
+                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}>
+                                  <div style={{marginBottom:10}}>  
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}}  type={this.state.fbLikeicon} /></Col>               
+                                  </Row>
+                                  </div>
+                                </a>
+                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbshare}>
                                 <div style={{marginBottom:10}}>  
-                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
-                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
-                                </Row>
-
-                              </div>
-                              <div style={{marginBottom:10}}>  
-                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
-                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
-                                </Row>
-
-                              </div>
-                            </a>
-                                                 
-                        </div>
-                    </div>
-                     
-                  
-                   
-                </Card>
-                </Layout>
+                                  <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}} type={this.state.fbshareicon}/></Col>               
+                                  </Row>
+                                </div>
+                                </a>
+                                            
+                          </div>
+                      </div>        
+                  </Card>
+                </Col>
+               
+              </div>            
                 <Modal
                     visible={this.state.visible}
                     // onOk={this.handleOk}
