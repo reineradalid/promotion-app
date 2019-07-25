@@ -344,24 +344,24 @@ class Widget2 extends React.Component {
                 </Modal>
 
 								<Drawer title="Create a new account" width={720} onClose={this.onClose}visible={this.state.visible_drawer}>
-									<div
-										style={{
-											position: 'absolute',
-											left: 0,
-											top: 0,
-											width: '100%',
-											padding: '10px 16px',
-											background: '#fff',
-											textAlign: 'right',
-										}}
-									>
+										<div
+											style={{
+												position: 'absolute',
+												left: 0,
+												top: 0,
+												width: '100%',
+												padding: '10px 16px',
+												background: '#fff',
+												textAlign: 'right',
+											}}
+										>
 
-										<Col align="middle" type="flex" justify="center">
-											
-											<Signup />
-										</Col>
-									</div>
-							</Drawer>
+											<Col align="middle" type="flex" justify="center">
+												
+												<Signup />
+											</Col>
+										</div>
+								</Drawer>
 
 						</div>
 

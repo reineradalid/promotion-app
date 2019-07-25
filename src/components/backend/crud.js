@@ -23,6 +23,8 @@ export function Register(value){
   var host = 'jobstreamapp.com';
   var endpoint = '/jobseeker/signup';
 
+  
+
   function timestamp(){
     var date = new Date();
     var ts = date.getTime();
@@ -43,7 +45,7 @@ export function Register(value){
      .then((res)=>res)
   }
 
-  get_accessToken().then(data=>{
+  return get_accessToken().then(data=>{
     var access_token = data.result.accessToken;
     var token = tokens();
     var signature = sig();
@@ -51,8 +53,6 @@ export function Register(value){
       function tokens(){
         return access_token + secretkey + timestamps + host + endpoint;
       }
-
-      console.log(token);
       
       function sig(){
         var crypto = require('crypto'),
@@ -71,7 +71,7 @@ export function Register(value){
 
         var val = JSON.stringify(value.values);
         var vals = JSON.parse(val);
-        console.log(val);
+        // console.log(val);
 
         return fetch('https://jobstreamapp.com:'+port+'/api/'+endpoint,{
         method: 'POST',
@@ -95,19 +95,21 @@ export function Register(value){
 
       }
 
-      sign_up().then(data=>{
-        console.log(data);
-
-  });
-
-
-
+      let getstatus = sign_up().then(data=>{
+        if(data.success === true){
+          return true;
+        }else{  
+          return false;
+        }
+      });
+      return getstatus;
 
   });
 
 
 
   var val = JSON.stringify(value.values);
+
 
 
   // return fetch('http://172.104.62.175:1338/leads/classes/MLBB',{

@@ -17,12 +17,19 @@ class Signup extends React.Component {
         rSubTitle:'',
         rType:''
     }
+
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
             //console.log(values);
-            Register({values});
+
+            var res = Register({values});
+            res.then(data=>{
+                console.log(data);
+            })
+            
+            
             setTimeout(() => {   
                 this.setState({  visible:true });
                 this.setState({  rSubTitle:'' });
