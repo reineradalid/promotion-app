@@ -12,6 +12,13 @@ import {Card,
         Popconfirm,
         Divider
       } from 'antd';
+import {
+        BrowserView,
+        MobileView,
+        isBrowser,
+        isMobile,
+        isAndroid
+      } from "react-device-detect";
 import Signup from './signup.js';
 
 
@@ -33,6 +40,7 @@ class Widget2 extends React.Component {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
         key: 'tab1',
+        dlLink:'',
         noTitleKey: 'app',
         icon:'close-circle',
         fbLikeicon:'close-circle',
@@ -99,10 +107,25 @@ class Widget2 extends React.Component {
       }
       
       download =() =>{
-        this.state.downloadIcon == 'close-circle' ?  
-        this.setState({ downloadIcon: 'check-circle' }) 
-        :  
-         this.setState({ downloadIcon: 'close-circle' });
+        if (isMobile) {
+          // this.setState({ dlLink: 'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })
+          // this.state.downloadIcon == 'close-circle' ?  
+          // this.setState({ downloadIcon: 'check-circle' }) 
+          // :  
+          // this.setState({ downloadIcon: 'close-circle' });
+          console.log('mobile')
+
+          // return <div> This content is unavailable on mobile</div>
+      }else{
+        console.log('web')
+
+      }
+     
+  
+        // this.state.downloadIcon == 'close-circle' ?  
+        // this.setState({ downloadIcon: 'check-circle' }) 
+        // :  
+        //  this.setState({ downloadIcon: 'close-circle' });
       }
 
     
@@ -160,7 +183,7 @@ class Widget2 extends React.Component {
                                   </Row>
                                 </div>
                               </a>
-                              <a  href="https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en" target='_blank' onClick={this.download}>
+                              <a    onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
