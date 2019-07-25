@@ -132,12 +132,23 @@ class Widget2 extends React.Component {
                                   <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
                                   <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
                                 </Row>
+                                </div>
+                                <div style={{marginBottom:10}}>  
                                 <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                   <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
                                   <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
                                 </Row>
+                                </div>
+                                <div style={{marginBottom:10}}>  
                                 <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Signup / Sign in </h2></Col> 
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
+                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                </Row>
+
+                              </div>
+                              <div style={{marginBottom:10}}>  
+                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
                                   <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
                                 </Row>
 
