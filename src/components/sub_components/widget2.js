@@ -93,7 +93,7 @@ class Widget2 extends React.Component {
   
     render() {
         return (
-            <div style={{marginLeft:2}} id='cardH'>
+            <div  style={{marginLeft:2, flex:1, alignItems:'center', justifyContent:'center '}} id='cardH'>
                 <Layout  >
                 <Card
                     style={{ alignItems:'center', 
@@ -151,15 +151,10 @@ class Widget2 extends React.Component {
                                   <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
                                   <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
                                 </Row>
-
                               </div>
-                            </a>
-                                                 
+                            </a>                    
                         </div>
-                    </div>
-                     
-                  
-                   
+                    </div>        
                 </Card>
                 </Layout>
                 <Modal
