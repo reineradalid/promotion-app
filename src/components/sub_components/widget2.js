@@ -9,7 +9,8 @@ import {Card,
         Input,
         Checkbox,
         Button,
-        Popconfirm
+        Popconfirm,
+        Divider
       } from 'antd';
 import Signup from './signup.js';
 
@@ -34,6 +35,10 @@ class Widget2 extends React.Component {
         key: 'tab1',
         noTitleKey: 'app',
         icon:'close-circle',
+        fbLikeicon:'close-circle',
+        fbshareicon:'close-circle',
+        fbLikeicon:'close-circle',
+        downloadIcon:'close-circle',
         title:'Giveaways',
         description:[
             {
@@ -80,6 +85,25 @@ class Widget2 extends React.Component {
       //   e.preventDefault()
       //   this.props.onSignIn(username, password)
       // }
+      fbLike =() =>{
+        this.state.fbLikeicon == 'close-circle' ?  
+        this.setState({ fbLikeicon: 'check-circle' }) 
+        :  
+         this.setState({ fbLikeicon: 'close-circle' });
+      }
+      fbshare =() =>{
+        this.state.fbshareicon == 'close-circle' ?  
+        this.setState({ fbshareicon: 'check-circle' }) 
+        :  
+         this.setState({ fbshareicon: 'close-circle' });
+      }
+      
+      download =() =>{
+        this.state.downloadIcon == 'close-circle' ?  
+        this.setState({ downloadIcon: 'check-circle' }) 
+        :  
+         this.setState({ downloadIcon: 'close-circle' });
+      }
 
     
      
@@ -127,33 +151,43 @@ class Widget2 extends React.Component {
                       <div style={{marginBottom:10}}>
                           <div style={{textAlign:'left', color:'gray'}}>
                             
-                              <a  >
+                              <a>
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
-                                    <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.icon} /></Col>               
                                   </Row>
-                                  </div>
+                                </div>
+                              </a>
+                              <a  href="https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en" target='_blank' onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
-                                    <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20}}  type={this.state.downloadIcon} /></Col>               
                                   </Row>
                                   </div>
+                                </a>
+                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
-                                    <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}}  type={this.state.fbLikeicon} /></Col>               
                                   </Row>
-
-                                </div>
+                                  </div>
+                                </a>
+                                <a href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbshare}>
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
-                                    <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                    <Divider type="vertical" />
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20}} type={this.state.fbshareicon}/></Col>               
                                   </Row>
                                 </div>
-                              </a>                    
+                                </a>
+                                            
                           </div>
                       </div>        
                   </Card>
