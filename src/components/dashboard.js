@@ -7,7 +7,7 @@ import { Menu, Button, Icon, Layout, Row, Col, Statistic} from 'antd';
 import Signup from './sub_components/signup.js';
 import Entrylist from './sub_components/entrylist';
 import mod from './backend/crud.js';
-import { useCookies } from 'react-cookie';
+// import { useCookies } from 'react-cookie';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Statistic title="Unmerged" value={93} suffix="/ 100" />
-                                    <Button onClick={test} />
+                                    {/* <Button onClick={test} /> */}
                                 </Col>
                             </Row>
                             <Row>
@@ -82,15 +82,15 @@ class Dashboard extends React.Component {
       }
 }
 
-function test() {
+// function test() {
     
-    const [cookies, setCookie] = useCookies(['name']);
+//     const [cookies, setCookie] = useCookies(['name']);
 
-    setCookie('name', 'REX TAN', { path: '/' });
+//     setCookie('name', 'REX TAN', { path: '/' });
     
-    return (
-      console.log(cookies.name)
-    );
-  }
+//     return (
+//       console.log(cookies.name)
+//     );
+//   }
     
 export default Dashboard;

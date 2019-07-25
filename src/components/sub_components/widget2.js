@@ -27,7 +27,7 @@ import Signup from './signup.js';
   const EditableFormRow = Form.create()(EditableRow);
 
   
-class Widget extends React.Component {
+class Widget2 extends React.Component {
     state = {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
@@ -245,9 +245,7 @@ class Widget extends React.Component {
                      
                       <Form.Item style={{float:'right', marginTop:-30}}>
                           Or <a href=""> register now!</a>
-                      </Form.Item>
-                      
-                      
+                      </Form.Item>   
                     </Form>
                     
                 </Modal>
@@ -263,4 +261,4 @@ class Widget extends React.Component {
     }
 }
 
-export default Widget;
+export default Widget2;
