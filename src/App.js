@@ -1,5 +1,6 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Dash from './components/dashboard.js'
 import Widget2 from './components/sub_components/widget2.js';
 
@@ -14,4 +15,16 @@ function App() {
   );
 }
 
-export default App;
+const { bool } = PropTypes;
+
+App.propTypes = {
+  authenticated: bool.isRequired,
+  checked: bool.isRequired
+};
+
+const mapState = ({ session }) => ({
+  checked: session.checked,
+  authenticated: session.authenticated
+});
+
+export default connect(mapState)(App);
