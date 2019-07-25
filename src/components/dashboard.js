@@ -6,6 +6,7 @@ import {Button, Icon, Layout, Row, Col, Statistic} from 'antd';
 
 import Active_list from './sub_components/active_promo.js';
 import mod from './backend/crud.js';
+// import { useCookies } from 'react-cookie';
 
 
 class Dashboard extends React.Component {
