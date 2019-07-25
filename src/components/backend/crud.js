@@ -96,11 +96,12 @@ export function Register(value){
       }
 
       let getstatus = sign_up().then(data=>{
-        if(data.success === true){
-          return true;
-        }else{  
-          return false;
-        }
+        // if(data.success === true){
+        //   return true;
+        // }else{  
+        //   return false;
+        // }
+        return data;
       });
       return getstatus;
 
