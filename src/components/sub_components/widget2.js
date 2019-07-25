@@ -115,14 +115,14 @@ class Widget2 extends React.Component {
         this.setState({ [type]: key });
       };
 
-      // iconchange = () => {
+      iconchange = () => {
        
-      //   this.state.icon == 'close-circle' ?  
-      //   this.setState({ icon: 'check-circle' }) 
-      //   :  
-      //    this.setState({ icon: 'close-circle' });
+        this.state.icon == 'close-circle' ?  
+        this.setState({ icon: 'check-circle' }) 
+        :  
+         this.setState({ icon: 'close-circle' });
        
-      // };
+      };
         showModal = () => {
         this.setState({
           visible: true,
@@ -131,12 +131,6 @@ class Widget2 extends React.Component {
 
       // handleSignIn(e) {
       //   e.preventDefault()
-      //   if(this.username){
-      //     this.username = this.refs.username.value
-      //     password = this.refs.password.value
-
-      //   } 
-        
       //   this.props.onSignIn(username, password)
       // }
 
@@ -248,9 +242,7 @@ class Widget2 extends React.Component {
                       </Form.Item>   
                     </Form>
                     
-                </Modal>
-
-                
+                </Modal>              
             </div>
 
 
