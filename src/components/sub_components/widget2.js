@@ -57,23 +57,23 @@ class Widget2 extends React.Component {
         sgcolor:'red',
         lcolor:'red',
         description:[
-            {
-              id:1,
-              des: 'Sign in/ Signup',
-            },
-            {
-                id:2,
-              des: 'Like and Share our page',
-            },
-            {
-                id:3,
-              des:'Like and Share the post',
-            },
-            {
-                id:4,
-                des:'Download App',
-            }
-          ], 
+          {
+            id:1,
+            des: 'Sign in/ Signup',
+          },
+          {
+              id:2,
+            des: 'Like and Share our page',
+          },
+          {
+              id:3,
+            des:'Like and Share the post',
+          },
+          {
+              id:4,
+              des:'Download App',
+          }
+        ], 
       };
   }
     
@@ -150,7 +150,7 @@ class Widget2 extends React.Component {
        :
        console.log('done')
       }
-        
+
       handleCancel = e => {
         console.log(e);
         this.setState({
@@ -161,7 +161,7 @@ class Widget2 extends React.Component {
     render() {
         return (
             <div  style={{ flex:1, alignItems:'center', justifyContent:'center ', overflowY:'hidden'}} id='cardH'>
-              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:30,marginBottom:30, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
+              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:50,marginBottom:50, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
                 <Col  type="flex" justify="center" align="middle">
                   <Card
                       style={{ alignItems:'center', 
@@ -171,7 +171,7 @@ class Widget2 extends React.Component {
                               maxHeight: '200vh',
                               maxWidth:'60vh' 
                               }}
-                              title={<h1 style={{fontSize:25}}>{this.state.title}</h1>}
+                              title={ <h1 style={{fontSize:25}}>{this.state.title}</h1>}
                       // tabList={tabList}
                       activeTabKey={this.state.key}
                       onTabChange={key => {
