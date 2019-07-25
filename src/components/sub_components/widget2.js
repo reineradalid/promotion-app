@@ -36,11 +36,15 @@ import Signup from './signup.js';
 
   
 class Widget2 extends React.Component {
-    state = {
+  constructor(props){
+    super(props);
+  
+    this.state = {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
         key: 'tab1',
         dlLink:'',
+        links:'',
         noTitleKey: 'app',
         icon:'close-circle',
         fbLikeicon:'close-circle',
@@ -65,10 +69,9 @@ class Widget2 extends React.Component {
                 id:4,
                 des:'Download App',
             }
-          ],
-    
-         
+          ], 
       };
+  }
     
       onTabChange = (key, type) => {
        
@@ -105,21 +108,31 @@ class Widget2 extends React.Component {
         :  
          this.setState({ fbshareicon: 'close-circle' });
       }
-      
-      download =() =>{
-        if (isMobile) {
-          // this.setState({ dlLink: 'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })
-          // this.state.downloadIcon == 'close-circle' ?  
-          // this.setState({ downloadIcon: 'check-circle' }) 
-          // :  
-          // this.setState({ downloadIcon: 'close-circle' });
-          console.log('mobile')
 
-          // return <div> This content is unavailable on mobile</div>
+
+      componentDidMount(){
+        if (isMobile) {
+          if(isAndroid){
+            this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
+            console.log(this.state.dlLink)
+          }else{
+            console.log('ios')
+            this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
+          }
+          console.log('mobile')     
       }else{
-        console.log('web')
+        
+        this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
+        console.log(this.state.dlLink)
+      }
 
       }
+      
+      
+      download =(event) =>{
+        event.preventDefault();
+       console.log(this.state.dlLink)
+      
      
   
         // this.state.downloadIcon == 'close-circle' ?  
@@ -183,7 +196,7 @@ class Widget2 extends React.Component {
                                   </Row>
                                 </div>
                               </a>
-                              <a    onClick={this.download}>
+                              <a href={this.state.dlLink} onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
