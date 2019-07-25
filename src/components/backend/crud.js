@@ -107,10 +107,6 @@ export function Register(value){
 
 
 
-
-
-
-
   var val = JSON.stringify(value.values);
 
 
