@@ -3,19 +3,6 @@ module.exports = {
 
     getRecord: function(){
         
-
-        //   fetch("http://172.104.62.175:1338/leads/classes/MLBB", )
-        //   .then(res => res.json())
-        //   .then(
-        //     (result) => {
-        //       console.log(result);
-        //     },
-        //     (error) => {
-              
-        //     }
-        //   )
-
-
         fetch('http://172.104.62.175:1338/leads/classes/MLBB', {
             method: 'GET',
             headers: {
@@ -24,12 +11,12 @@ module.exports = {
             }
           })
           .then(res => res.json())
-          .then(
-                (result) => {
-                  console.log(result);
+          .then((result) => {
+                  
+                  return result;
                 },
                 (error) => {
-                  
+                  console.log(error);
                 }
           )
 
@@ -37,7 +24,7 @@ module.exports = {
     },
  
     setRecord: function(){
-        alert('Hi');
+        return 'SOmething';
     }
  
  }

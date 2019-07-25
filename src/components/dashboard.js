@@ -2,21 +2,15 @@ import React from 'react';
 import HeadLord from './sub_components/header.js'
 import Sidebar from './sidebar.js'
 
-import Widget from './sub_components/widget.js'
-import { Menu, Button, Icon, Layout, Row, Col, Statistic} from 'antd';
-import Signup from './sub_components/signup.js';
-import Entrylist from './sub_components/entrylist';
-import mod from './backend/crud.js';
-import { useCookies } from 'react-cookie';
+import {Button, Icon, Layout, Row, Col, Statistic} from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+import Active_list from './sub_components/active_promo.js';
+import mod from './backend/crud.js';
+
 
 class Dashboard extends React.Component {
     
     render() {
-
-        
    
         return (
             
@@ -27,9 +21,9 @@ class Dashboard extends React.Component {
                     <HeadLord />
                     
                     <Row>
-                        <div class="col-12">
+                        <div className="col-12">
                             {/* <HeadLord/> */}
-                            <div class="container">
+                            <div className="container">
                             <Row gutter={10}>
                                 <Col span={4} style={{backgroundColor: '#2ecc71', padding: '15px', borderRadius: '5px'}}>
                                     <Statistic style={{color: '#fff'}}title="Active Promotion" value={10} prefix={<Icon type="notification" />} />
@@ -42,13 +36,13 @@ class Dashboard extends React.Component {
                                 </Col>
                                 <Col span={4}>
                                     <Statistic title="Unmerged" value={93} suffix="/ 100" />
-                                    <Button onClick={test} />
+                                    <Button onClick={mod.getRecord} />
                                 </Col>
                             </Row>
                             <Row>
-                                <Col span={20}>
+                                <Col span={8}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
-                                        <Entrylist/>
+                                    < Active_list/>
                                     </div>
                                 </Col>
                                 
@@ -56,12 +50,12 @@ class Dashboard extends React.Component {
                             <Row>
                                 <Col span={14}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
-                                        <Widget/>
+                                        
                                     </div>
                                 </Col>
                                 <Col span={8}>
                                     <div style={{alignItems:'center', justifyContent:'center', width:'100%'}}>
-                                        <Signup/>
+                                        
                                     </div>
                                 </Col>
                                 
@@ -82,15 +76,6 @@ class Dashboard extends React.Component {
       }
 }
 
-function test() {
-    
-    const [cookies, setCookie] = useCookies(['name']);
 
-    setCookie('name', 'REX TAN', { path: '/' });
-    
-    return (
-      console.log(cookies.name)
-    );
-  }
-    
+
 export default Dashboard;
