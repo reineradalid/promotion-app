@@ -44,7 +44,7 @@ class Widget2 extends React.Component {
     super(props);
   
     this.state = {
-        img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        img:'https://cdn.dribbble.com/users/1180042/screenshots/5716159/diamant.gif',
 				visible: false,
 				visible_drawer: false,
         key: 'tab1',
@@ -93,6 +93,8 @@ class Widget2 extends React.Component {
   }
 
   componentDidMount(){
+      // this.setState({ disable : this.asd})
+    
     if (isMobile) {
         if(isAndroid){
           this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
@@ -126,6 +128,8 @@ class Widget2 extends React.Component {
 
      
       fbLike =() =>{
+
+
         if(this.state.disable == true){
          console.log("Please Sign up")
         }else{
@@ -215,7 +219,7 @@ class Widget2 extends React.Component {
     render() {
         return (
             <div  style={{ flex:1, alignItems:'center', justifyContent:'center ', overflowY:'hidden'}} id='cardH'>
-              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:50,marginBottom:50, marginLeft:5, marginRight:5, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
+              <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:5,marginBottom:5, marginLeft:5, marginRight:5, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
                 <Col  type="flex" justify="center" align="middle">
                   <Card
                       style={{ alignItems:'center', 
@@ -235,9 +239,10 @@ class Widget2 extends React.Component {
                       >
                       {/* {contentList[this.state.key]} */}
                       {/* <Signup/> */}
-                      <div >
+                     
                           <img style={{width:'100%'}} src={this.state.img} />
-                      </div>
+                     
+                      <Divider/>
                       <div style={{margin:20}}>
                           <div style={{textAlign:'left', color:'gray', fontSize:15}}>
                               {this.items = this.state.description.map((item, key) =>
@@ -286,7 +291,7 @@ class Widget2 extends React.Component {
                                   </Row>
                                 </div>
                                 </a>
-                                <Button onClick={this.change} type="primary">Click</Button>
+                                {/* <Button onClick={this.change} type="primary">Click</Button> */}
                                             
                           </div>
                       </div>        
@@ -343,18 +348,18 @@ class Widget2 extends React.Component {
                     
                 </Modal>
 
-								<Drawer title="Create a new account" width={720} onClose={this.onClose}visible={this.state.visible_drawer}>
-										<div
-											style={{
-												position: 'absolute',
-												left: 0,
-												top: 0,
-												width: '100%',
-												padding: '10px 16px',
-												background: '#fff',
-												textAlign: 'right',
-											}}
-										>
+								<Drawer title="Create a new account" width={430} onClose={this.onClose}visible={this.state.visible_drawer}>
+									<div
+										style={{
+											position: 'absolute',
+											left: 0,
+											top: 0,
+											width: '100%',
+											padding: '10px 16px',
+											background: '#fff',
+											textAlign: 'right',
+										}}
+									>
 
 											<Col align="middle" type="flex" justify="center">
 												
