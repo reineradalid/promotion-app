@@ -27,7 +27,7 @@ import Signup from './signup.js';
   const EditableFormRow = Form.create()(EditableRow);
 
   
-class Widget extends React.Component {
+class Widget2 extends React.Component {
     state = {
         img:'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         visible: false,
@@ -53,61 +53,8 @@ class Widget extends React.Component {
                 des:'Download App',
             }
           ],
-        steps:[
-          {
-            key:1,
-            des:'Sign up or signin',
-            act:this.showModal,
-            icon:'close-circle',
-            
-          },
-          {
-            key:2,
-            des:'follow',
-            act:   this.iconchange = () => {
-       
-              this.state.icon == 'close-circle' ?  
-              this.setState({ icon: 'check-circle' }) 
-              :  
-               this.setState({ icon: 'close-circle' });
-             
-            },
-            icon:'close-circle',
-          },
-          {
-            key:3,
-            des:'test',
-            act:   this.iconchange = () => {
-       
-              this.state.icon == 'close-circle' ?  
-              this.setState({ icon: 'check-circle' }) 
-              :  
-               this.setState({ icon: 'close-circle' });
-             
-            },
-            icon:'close-circle',
-          },
-          {
-            key:4,
-            des:'test',
-            act: this.showModal = () => {
-              this.setState({
-                visible: true,
-              });
-            },
-            icon:'close-circle',
-          },
-          {
-            key:5,
-            des:'test',
-            act: this.showModal = () => {
-              this.setState({
-                visible: true,
-              });
-            },
-            icon:'close-circle',
-          }
-        ]
+    
+         
       };
     
       onTabChange = (key, type) => {
@@ -115,14 +62,14 @@ class Widget extends React.Component {
         this.setState({ [type]: key });
       };
 
-      // iconchange = () => {
+      iconchange = () => {
        
-      //   this.state.icon == 'close-circle' ?  
-      //   this.setState({ icon: 'check-circle' }) 
-      //   :  
-      //    this.setState({ icon: 'close-circle' });
+        this.state.icon == 'close-circle' ?  
+        this.setState({ icon: 'check-circle' }) 
+        :  
+         this.setState({ icon: 'close-circle' });
        
-      // };
+      };
         showModal = () => {
         this.setState({
           visible: true,
@@ -131,12 +78,6 @@ class Widget extends React.Component {
 
       // handleSignIn(e) {
       //   e.preventDefault()
-      //   if(this.username){
-      //     this.username = this.refs.username.value
-      //     password = this.refs.password.value
-
-      //   } 
-        
       //   this.props.onSignIn(username, password)
       // }
 
@@ -184,16 +125,36 @@ class Widget extends React.Component {
                     </div>
                     <div style={{marginBottom:10}}>
                         <div style={{textAlign:'left', color:'gray'}}>
-                            {this.items = this.state.steps.map((item, key) =>
-                            <a  onClick={item.act}>
+                           
+                            <a  >
                               <div style={{marginBottom:10}}>  
-                                <Row   key={item.key} type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
-                                  <Col   key={item.key} span={20}><h2 style={{ float:'left', marginLeft:20}}>{item.des} </h2></Col> 
+                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign in </h2></Col> 
                                   <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
                                 </Row>
+                                </div>
+                                <div style={{marginBottom:10}}>  
+                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
+                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                </Row>
+                                </div>
+                                <div style={{marginBottom:10}}>  
+                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
+                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                </Row>
+
+                              </div>
+                              <div style={{marginBottom:10}}>  
+                                <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 }}>
+                                  <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
+                                  <Col style={{float:'right'}}   span={2}><Icon style={{fontSize:20, float:'right'}}  type={this.state.icon} /></Col>               
+                                </Row>
+
                               </div>
                             </a>
-                            )}                          
+                                                 
                         </div>
                     </div>
                      
@@ -245,14 +206,10 @@ class Widget extends React.Component {
                      
                       <Form.Item style={{float:'right', marginTop:-30}}>
                           Or <a href=""> register now!</a>
-                      </Form.Item>
-                      
-                      
+                      </Form.Item>   
                     </Form>
                     
-                </Modal>
-
-                
+                </Modal>              
             </div>
 
 
@@ -263,4 +220,4 @@ class Widget extends React.Component {
     }
 }
 
-export default Widget;
+export default Widget2;
