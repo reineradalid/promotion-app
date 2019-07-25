@@ -3,7 +3,10 @@ import { Form,
          Input, 
          Button,
          Modal, 
-         Result } from 'antd';
+         Result, 
+         Icon,
+        Checkbox,
+        Col} from 'antd';
 import Widget from './widget.js';
 import {Register} from '../backend/crud';
 
@@ -15,7 +18,9 @@ class Signup extends React.Component {
         visible: false,
         rTitle:'',
         rSubTitle:'',
-        rType:''
+        rType:'',
+        visibles:false,
+        asdddd:true,
     }
     handleSubmit = e => {
         e.preventDefault();
@@ -45,11 +50,30 @@ class Signup extends React.Component {
           visible: false,
         });
       };
+      handleCancels = e => {
+        console.log(e);
+        this.setState({
+          visibles: false,
+        });
+      };
+      showModal = () => {
+        this.setState({
+          visibles: true,
+        });
+      };
+
 
       imgChange = () => {
         this.setState({
        img: 'https://i.stack.imgur.com/ilBrr.png',
         });
+      };
+      handleLogin = () => {
+    //     this.setState({
+    //    disable:false,
+       
+    //     });
+        console.log(this.state.asdddd)
       };
 
       compareToFirstPassword = (rule, value, callback) => {
@@ -168,7 +192,8 @@ class Signup extends React.Component {
                             })(<Input addonBefore="+63" maxLength={10} minLength={10} name='mobile' placeholder="987654321" style={{ width: '100%' }} />)}
                     </Form.Item>
                     <Form.Item >
-                        <Button id="confirm_btn" type="primary" htmlType="submit">Sign Up!</Button>
+                        <Button id="confirm_btn" type="primary" htmlType="submit">Sign Up!</Button><br/>
+                        <a onClick={this.showModal}> Sign in </a>
                     </Form.Item>  
                 </Form>
 
@@ -177,7 +202,7 @@ class Signup extends React.Component {
                 <Modal
                    
                    visible={this.state.visible}
-                   onCancel={this.handleCancel}
+                   onCancel={this.handleCancels}
                    footer={null}
                    style={{ maxHeight: '20vh',
                            maxWidth:'40vh' }}
@@ -187,14 +212,65 @@ class Signup extends React.Component {
                             title={this.state.rTitle}
                             subTitle={this.state.rSubTitle}
                             extra={[
-                            <Button type="primary" key="console">
-                                Copy
-                            </Button>,
+                            // <Button type="primary" key="console">
+                            //     Copy
+                            // </Button>,
                             
                             ]}
                         />
                    
                </Modal>
+
+               <Modal
+                    visible={this.state.visibles}
+                    // onOk={this.handleOk}
+                    onCancel={this.handleCancels}
+                    footer={null}
+                     style={{
+                    Width:'50vh' }}
+                
+                    >
+                    
+                    <Form  onSubmit={this.handleSignIn} className="login-form" style={{width: '100%', alignItems:'center', justifyContent:'center',marginTop:50}}>
+                      <Form.Item >
+                      
+                          <Input
+                          prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                          placeholder="Username"
+                          
+                          />
+                      </Form.Item>
+                      <Form.Item >
+                      
+                          <Input
+                          prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                          type="password"
+                          placeholder="Password"
+                      
+                          />
+                      </Form.Item>
+                      <Form.Item >
+                        {/* <Checkbox style={{float:'left'}}>Remember me</Checkbox> */}
+                        <Col  type="flex" justify="center" align="middle">
+                        <Button onClick={this.handleLogin}  asd={this.state.asdddd} type="primary" htmlType="submit" className="login-form-button">
+                            Log in
+                        </Button>
+                        </Col>
+                      </Form.Item>
+                      {/* <Form.Item >
+                        
+                        <a style={{float:'right'}} className="login-form-forgot" href="">
+                            Forgot password
+                        </a>
+                    
+                      </Form.Item>
+                     
+                      <Form.Item style={{float:'right', marginTop:-30}}>
+                          Or <a href=""> register now!</a>
+                      </Form.Item>    */}
+                    </Form>
+                    
+                </Modal>
             </div>
           
         );
