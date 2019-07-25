@@ -9,9 +9,13 @@ import { Form,
         Col} from 'antd';
 import Widget from './widget.js';
 import {Register} from '../backend/crud';
+import { sessionService } from 'redux-react-session';
 
 class Signup extends React.Component {
-    state={
+    
+  constructor(props, context) {
+    super(props, context);
+    this.state={
         img :"https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         confirmDirty: false,
         autoCompleteResult: [],
@@ -21,9 +25,16 @@ class Signup extends React.Component {
         rType:'',
         v_alert:false,
         asdddd:true,
-    }
+        user:{
+          email: '',
+          fname: '',
+          lname: ''
+        }
 
-    handleSubmit = e => {
+    }
+  }
+
+      handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
@@ -40,6 +51,13 @@ class Signup extends React.Component {
                   setTimeout(() => {   
                     this.alertCancels();
                   }, 2000);
+
+
+                  const { token } = data.result.user.sessionToken;
+                  sessionStorage.setItem('token', token);
+                  sessionStorage.setItem('user_data', data.result.user);
+
+
                 }else{
                     this.setState({  v_alert:true });
                     this.setState({  rSubTitle:data.error.message });
