@@ -306,4 +306,9 @@ class Widget2 extends React.Component {
     }
 }
 
+function openInNewTab() {
+  var win = window.open('https://google.com', '_blank');
+  win.focus();
+}
+
 export default Widget2;

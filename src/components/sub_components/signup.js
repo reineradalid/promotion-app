@@ -5,6 +5,7 @@ import { Form,
          Modal, 
          Result } from 'antd';
 import Widget from './widget.js';
+import {Register} from '../backend/crud';
 
 class Signup extends React.Component {
     state={
@@ -20,14 +21,15 @@ class Signup extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
-            console.log(values);
-           
+            //console.log(values);
+            Register({values});
             setTimeout(() => {   
                 this.setState({  visible:true });
-                this.setState({  rSubTitle:'3454561sadasd' });
+                this.setState({  rSubTitle:'' });
                 this.setState({  rType:'success' });
                 this.setState({  rTitle:'Success' });
-              }, 1000);        
+              }, 1000);
+
           }else{
             this.setState({  visible:true });
             this.setState({  rSubTitle:'Try Different account' });
@@ -49,8 +51,33 @@ class Signup extends React.Component {
        img: 'https://i.stack.imgur.com/ilBrr.png',
         });
       };
-      
-      
+
+      compareToFirstPassword = (rule, value, callback) => {
+        const { form } = this.props;
+        if (value && value !== form.getFieldValue('password')) {
+          callback('Two passwords that you enter is inconsistent!');
+        } else {
+          callback();
+        }
+      };
+    
+      validateToNextPassword = (rule, value, callback) => {
+        const { form } = this.props;
+        if (value && this.state.confirmDirty) {
+          form.validateFields(['confirm'], { force: true });
+        }
+        callback();
+      };
+
+      validateEmail = (rule, value, callback) => {
+        const { form } = this.props;
+        if (value && value.includes("@") !== true) {
+            callback('Invalid Email');
+          } else {
+            callback();
+        }
+      };
+ 
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
@@ -73,11 +100,8 @@ class Signup extends React.Component {
                                 rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your password!',
-                                },
-                                {
-                                    validator: this.validateToNextPassword,
-                                },
+                                    message: 'Please input your First Name!',
+                                }
                                 ],
                             })(<Input name='fname' placeholder="First Name" />)}
                     </Form.Item>
@@ -86,7 +110,7 @@ class Signup extends React.Component {
                                 rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your password!',
+                                    message: 'Please input your Last Name!',
                                 },
                             
                                 ],
@@ -97,26 +121,38 @@ class Signup extends React.Component {
                                 rules: [
                                 {
                                     required: true,
-                                    message: 'Please input your password!',
-                                },
-                                {
-                                    validator: this.validateToNextPassword,
-                                },
+                                    message: 'Please input your Email!',
+                                },{
+                                    validator: this.validateEmail,
+                                }
                                 ],
-                            })(<Input  name='email'  placeholder="email" />)}
+                            })(<Input  name='email'  placeholder="email"/>)}
                     </Form.Item>
                     <Form.Item  hasFeedback>
                         {getFieldDecorator('password', {
                             rules: [
                             {
                                 required: true,
-                                message: 'Please input your password!',
+                                message: 'Please input your Password!',
                             },
                             {
-                                validator: this.validateToNextPassword,
+                              validator: this.validateToNextPassword,
+                            }
+                            ],
+                        })(<Input.Password  minLength={8} name='password' placeholder="Password" />)}
+                    </Form.Item>
+                    <Form.Item hasFeedback>
+                        {getFieldDecorator('confirm', {
+                            rules: [
+                            {
+                                required: true,
+                                message: 'Please confirm your password!',
+                            },
+                            {
+                                validator: this.compareToFirstPassword,
                             },
                             ],
-                        })(<Input.Password  minLength={10} name='password' placeholder="Password" />)}
+                        })(<Input.Password minLength={8} onBlur={this.handleConfirmBlur} placeholder="Confirm Password" />)}
                     </Form.Item>
                     <Form.Item >
                         {getFieldDecorator('mobile', {
@@ -129,10 +165,10 @@ class Signup extends React.Component {
                                     validator: this.validateToNextPassword,
                                 },
                                 ],
-                            })(<Input addonBefore="+63" maxLength={13} minLength={10} name='mobile' placeholder="987654321" style={{ width: '100%' }} />)}
+                            })(<Input addonBefore="+63" maxLength={10} minLength={10} name='mobile' placeholder="987654321" style={{ width: '100%' }} />)}
                     </Form.Item>
                     <Form.Item >
-                        <Button id="confirm_btn" type="primary" htmlType="submit">confirm</Button>
+                        <Button id="confirm_btn" type="primary" htmlType="submit">Sign Up!</Button>
                     </Form.Item>  
                 </Form>
 
