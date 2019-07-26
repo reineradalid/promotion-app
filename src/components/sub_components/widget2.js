@@ -132,7 +132,7 @@ class Widget2 extends React.Component {
 
       verifyQS =() =>{
 
-        if(sessionStorage){
+        if(sessionStorage.getItem('token') !== null){
           console.log(sessionStorage.getItem('user_data'));
           this.setState({signUp_status: true});
           this.setState({ signUp_icon: 'check-circle' }) 
