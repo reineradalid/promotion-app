@@ -63,6 +63,7 @@ class Widget2 extends React.Component {
         lcolor:'red',
         disable:true,
         opacity:.7,
+        fbmodal:false,
         entries:[
           {
             id:'1',
@@ -154,10 +155,10 @@ class Widget2 extends React.Component {
         if(this.state.disable == true){
          console.log("Please Sign up")
         }else{
-          // var newArr = this.state.entries;
-          // newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test'});  
-          // this.setState({some:'val',entries:newArr})
-          // console.log(this.state.entries)
+          var newArr = this.state.entries;
+          newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test'});  
+          this.setState({some:'val',entries:newArr})
+          console.log(this.state.entries)
   
           this.state.fbLikeicon == 'close-circle' ?  
           this.setState({ fbLikeicon: 'check-circle' }) 
@@ -226,6 +227,9 @@ class Widget2 extends React.Component {
 			showDrawer = () => {
 				this.setState({
 					visible_drawer: true,
+        });
+        this.setState({
+					fbmodal: true,
 				});
 			};
 
@@ -386,6 +390,21 @@ class Widget2 extends React.Component {
 											</Col>
 										</div>
 								</Drawer>
+
+
+                <Modal
+                    visible={this.state.fbmodal}
+                    // onOk={this.handleOk}
+                    // onCancel={this.handleCancel}
+                    closable={false}
+                    footer={null}
+                    style={{ maxHeight: '10vh',
+                            maxWidth:'40vh' }}
+                    >
+                    
+                   
+                    
+                </Modal>
 
 						</div>
 
