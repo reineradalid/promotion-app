@@ -131,22 +131,29 @@ class Widget2 extends React.Component {
         });
       };
 
-      verifyQS =() =>{
+      verifyQS = async() =>{
 
         if(sessionStorage.getItem('token') !== null){
-          console.log(sessionStorage.getItem('user_data'));
-          this.setState({signUp_status: true});
-          this.setState({ signUp_icon: 'check-circle' }) 
-          this.setState({ signUp_icon_color: '#2ecc71' })
+          //console.log(sessionStorage.getItem('user_data'));
+          this.setState({ signUp_icon: 'check-circle' });
+          this.setState({ signUp_icon_color: '#2ecc71' });
+          await this.setState({signUp_status: true});  
+          this.steps_enabler();  
           
         }else{
           console.log('Empty session');
         }
-
-        
-      
       }
 
+      async steps_enabler (){
+        console.log(this.state.signUp_status);
+        if(this.state.signUp_status === true){
+            this.setState({disable: false});
+            this.setState({opacity: 1});
+        }
+
+      }
+        
 
 
      
