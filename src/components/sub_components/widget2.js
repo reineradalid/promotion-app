@@ -75,6 +75,7 @@ class Widget2 extends React.Component {
   }
 
       componentDidMount(){
+        console.log(window.location.href)
       
         if (isMobile) {
             if(isAndroid){
