@@ -4,10 +4,6 @@ import {Card,
         Row,
         Col,  
         Modal,
-        Form,
-        Input,
-        Checkbox,
-        Button,
         Divider,
         Drawer,
       } from 'antd';
@@ -17,21 +13,7 @@ import {
       } from "react-device-detect";
 import Signup from './signup.js';
 import FacebookLogin from './fb_login.js';
-
-
-
-
-  
-  // const EditableContext = React.createContext();
-
-  // const EditableRow = ({ form, index, ...props }) => (
-  //   <EditableContext.Provider value={form}>
-  //     <tr {...props} />
-  //   </EditableContext.Provider>
-  // );
-
-  // const EditableFormRow = Form.create()(EditableRow);
-
+import {fb_cred} from '../backend/facebookApi.js';
   
 class Widget2 extends React.Component {
 
@@ -69,7 +51,6 @@ class Widget2 extends React.Component {
         loginVisible: false,
         fbmodal:false,
 
-
         entries:[ ],
         description:[
           {
@@ -94,7 +75,7 @@ class Widget2 extends React.Component {
   }
 
       componentDidMount(){
-
+      
         if (isMobile) {
             if(isAndroid){
               this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
@@ -142,9 +123,9 @@ class Widget2 extends React.Component {
       }
         
       download =() =>{
-
+       
         var newArr = this.state.entries;
-        newArr.push({ 'name': " test ", 'action':"Download" ,'email': 'test@test' , 'worth': 3});
+        newArr.push({ 'name': fb_cred.name, 'action':"Download" ,'email': 'test@test' , 'worth': 3});
         this.setState({some:'val',entries:newArr})
         console.log(this.state.entries)
 
@@ -162,7 +143,7 @@ class Widget2 extends React.Component {
 
      
           var newArr = this.state.entries;
-          newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test', 'worth': 1});  
+          newArr.push({ 'name': fb_cred.name, 'action':"Like", 'email': fb_cred.email, 'worth': 1});  
           this.setState({some:'val',entries:newArr})
           console.log(this.state.entries )
           console.log(this.state.some )
@@ -182,9 +163,11 @@ class Widget2 extends React.Component {
       
 
       fbshare =() =>{
+      
+
         var newArr = this.state.entries;
         
-        newArr.push({ 'name': " test ", 'action':"Share" ,'email': 'test@test',  'worth': 1});
+        newArr.push({ 'name':fb_cred.name, 'action':"Share" ,'email': fb_cred.email,  'worth': 1});
        
         this.setState({some:'val',entries:newArr})
         console.log(this.state.entries)
@@ -260,17 +243,13 @@ class Widget2 extends React.Component {
                               maxHeight: '200vh',
                               maxWidth:'60vh' 
                               }}
-                              title={ <h1 style={{fontSize:25}}>{this.state.title}</h1>}
-                      // tabList={tabList}
+                              title={ <div><img style={{maxWidth:120}}  src={require('../assets/logo.png')} alt="" /></div>}             
                       activeTabKey={this.state.key}
                       onTabChange={key => {
                           this.onTabChange(key, 'key');
                       }}
                     
                       >
-                      {/* {contentList[this.state.key]} */}
-                      {/* <Signup/> */}
-                     
                           <img style={{width:'100%'}} src={this.state.img} alt="" />
                      
                       <Divider/>
@@ -285,11 +264,11 @@ class Widget2 extends React.Component {
                           <div style={{textAlign:'left', color:'gray'}}>
                             
                               <a onClick={this.showDrawer} >
-                                <div style={{marginBottom:10}}>  
+                                <div style={{marginBottom:5}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , }}>
-                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign up </h2></Col> 
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20, marginTop:7 }}> Sign up </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.signUp_icon_color}}  type={this.state.signUp_icon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, marginTop:7, color:this.state.signUp_icon_color}}  type={this.state.signUp_icon} /></Col>               
                                   </Row>
                                 </div>
                               </a>
@@ -297,9 +276,9 @@ class Widget2 extends React.Component {
                               <a disabled={this.state.step_status_disable}  href={this.state.dlLink} target="_blank" onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , opacity:this.state.opacity}}>
-                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
+                                    <Col  span={20}><h2 style={{ float:'left', marginLeft:20,  marginTop:7}}> Download </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dl_icon_color, opacity:this.state.opacity }}  type={this.state.dl_icon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20,  marginTop:7,color:this.state.dl_icon_color, opacity:this.state.opacity }}  type={this.state.dl_icon} /></Col>               
                                   </Row>
                                   </div>
                               </a>
@@ -307,19 +286,19 @@ class Widget2 extends React.Component {
                               <a disabled={this.state.disable} rel="noopener noreferrer" href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}> 
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 ,  opacity:this.state.opacity}}>
-                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20, marginTop:7}}>Like Facebook page</h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20, color:this.state.lcolor , opacity:this.state.opacity}}  type={this.state.fbLikeicon} /></Col>               
+                                    <Col style={{alignItems:'center'}}  span={2}><Icon style={{fontSize:20,  marginTop:7,color:this.state.lcolor , opacity:this.state.opacity}}  type={this.state.fbLikeicon} /></Col>               
                                   </Row>
                                   </div>
                                 </a>
                                 <a disabled={this.state.disable} rel="noopener noreferrer" href="https://www.facebook.com/JobStreamApp.Philippines"  target='_blank' onClick={this.fbshare}>
                                 
-                                <div style={{marginBottom:10}}>  
+                                <div>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5,  opacity:this.state.opacity}}>
-                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Share Facebook page</h2></Col> 
+                                    <Col   span={20}><h2 style={{ float:'left', marginLeft:20, marginTop:7}}>Share Facebook page</h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, color:this.state.scolor,  opacity:this.state.opacity}} type={this.state.fbshareicon}/></Col>               
+                                    <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, marginTop:7, color:this.state.scolor,  opacity:this.state.opacity}} type={this.state.fbshareicon}/></Col>               
                                   </Row>
                                 </div>
                                 </a>
