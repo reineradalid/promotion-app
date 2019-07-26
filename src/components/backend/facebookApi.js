@@ -1,0 +1,1 @@
+export const fb_cred = {name: "Rex Tan", email: "test@email.com"};

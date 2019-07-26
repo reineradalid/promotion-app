@@ -16,7 +16,8 @@ import {
         isAndroid
       } from "react-device-detect";
 import Signup from './signup.js';
-// import { throwStatement } from '@babel/types';
+import FacebookLogin from './fb_login.js';
+
 
 
 
@@ -57,8 +58,7 @@ class Widget2 extends React.Component {
         lcolor:'red',
         disable:true,
         opacity:.7,
-        fbmodal:false,
-        some:'',
+        
 
         signUp_status : false,
         signUp_icon_color: 'red',
@@ -67,6 +67,7 @@ class Widget2 extends React.Component {
         dl_icon_color: 'red',
         dl_icon: 'close-circle',
         loginVisible: false,
+        fbmodal:false,
 
 
         entries:[ ],
@@ -88,8 +89,7 @@ class Widget2 extends React.Component {
               des:'Download App   : 3 entry',
           }
         ],
-        
-
+      
       };
   }
 
@@ -116,19 +116,6 @@ class Widget2 extends React.Component {
       componentWillMount(){
         this.verifyQS();
       }
-    
-      change = () => {
-       
-        this.setState({ opacity: 1 });
-        this.setState({ disable:false });
-
-      };
-
-      showModal = () => {
-        this.setState({
-          loginVisible: true,
-        });
-      };
 
       verifyQS = async() =>{
 
@@ -149,11 +136,11 @@ class Widget2 extends React.Component {
         if(this.state.signUp_status === true){
             this.setState({disable: false});
             this.setState({opacity: 1});
+
         }
 
       }
         
-
       download =() =>{
 
         var newArr = this.state.entries;
@@ -171,7 +158,6 @@ class Widget2 extends React.Component {
        console.log('done')
       }
 
-     
       fbLike =() =>{
 
      
@@ -213,8 +199,19 @@ class Widget2 extends React.Component {
        :
        console.log('done')
       } 
-      
-      
+
+      change = () => {
+       
+        this.setState({ opacity: 1 });
+        this.setState({ disable:false });
+
+      };
+       
+      showModal = () => {
+        this.setState({
+          loginVisible: true,
+        });
+      };
 
       loginHandleCancel = e => {
         console.log(e);
@@ -224,19 +221,31 @@ class Widget2 extends React.Component {
 			};
 			
 			showDrawer = () => {
+        this.showfbLogin();
 				this.setState({
 					visible_drawer: true,
         });
         this.setState({
-					//fbmodal: true,
+					fbmodal: true,
 				});
 			};
 
-			onClose = () => {
+			closeDrawer = () => {
 				this.setState({
 					visible_drawer: false,
 				});
-			};
+      };
+      
+      showfbLogin = () => {
+        this.setState({
+					fbmodal: true,
+				});
+      }
+      closefbLogin = () =>{
+        this.setState({
+					fbmodal: false,
+				});
+      }
   
     render() {
         return (
@@ -284,8 +293,8 @@ class Widget2 extends React.Component {
                                   </Row>
                                 </div>
                               </a>
-                              
-                              <a disabled={this.state.step_status_disable} rel="noopener noreferrer" href={this.state.dlLink} target="_blank" onClick={this.download}>
+
+                              <a disabled={this.state.step_status_disable}  href={this.state.dlLink} target="_blank" onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
@@ -324,7 +333,7 @@ class Widget2 extends React.Component {
               </div>            
            
 
-								<Drawer title="Create a new account" width={430} onClose={this.onClose}visible={this.state.visible_drawer}>
+								<Drawer title="Create a new account" width={430} onClose={this.closeDrawer}visible={this.state.visible_drawer}>
 									<div
 										style={{
 											position: 'absolute',
@@ -354,9 +363,11 @@ class Widget2 extends React.Component {
                     style={{ maxHeight: '10vh',
                             maxWidth:'40vh' }}
                     >
+                      <Col justify="center" align="middle" type="text" style={{height: "30px;"}}>
+                          <FacebookLogin/>
+                      </Col>
                     
-                   
-                    
+
                 </Modal>
 
 						</div>
@@ -367,9 +378,5 @@ class Widget2 extends React.Component {
     }
 }
 
-function openInNewTab() {
-  var win = window.open('https://google.com', '_blank');
-  win.focus();
-}
 
 export default Widget2;
