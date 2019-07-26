@@ -64,7 +64,6 @@ class Widget2 extends React.Component {
         disable:true,
         opacity:.7,
         fbmodal:false,
-        fbLinks:'',
         entries:[
           {
             id:'1',
@@ -99,7 +98,6 @@ class Widget2 extends React.Component {
 
   componentDidMount(){
     this.verifyQS();
-    // this.handlefunction();
     
 
     if (isMobile) {
@@ -133,14 +131,6 @@ class Widget2 extends React.Component {
         });
       };
 
-      // handlefunction=()=>{
-      //   sessionStorage.getItem('token') !== null ?  
-      //   this.setState({ disable:false, opacity: 1  }) 
-      //  :
-      //  console.log('done')
-
-      // }
-
       verifyQS =() =>{
 
         if(sessionStorage.getItem('token') !== null){
@@ -148,8 +138,6 @@ class Widget2 extends React.Component {
           this.setState({signUp_status: true});
           this.setState({ signUp_icon: 'check-circle' }) 
           this.setState({ signUp_icon_color: '#2ecc71' })
-          this.setState({ disable:false, opacity: 1  }) 
-          this.setState({fbLinks: 'https://www.facebook.com/JobStreamApp.Philippines'})
           
         }else{
           console.log('Empty session');
@@ -223,8 +211,6 @@ class Widget2 extends React.Component {
         this.setState({ downloadIcon: 'check-circle' }) 
        :
        console.log('done')
-
-
        this.state.dcolor == 'red' ?  
        this.setState({ dcolor: '#428bca' }) 
        :
@@ -308,7 +294,7 @@ class Widget2 extends React.Component {
                                   </Row>
                                   </div>
                                 </a>
-                                <a disabled={this.state.disable} href={this.state.fbLinks} target='_blank' onClick={this.fbLike}> 
+                                <a disabled={this.state.disable} href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}> 
                                 
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 ,  opacity:this.state.opacity}}>
@@ -318,7 +304,7 @@ class Widget2 extends React.Component {
                                   </Row>
                                   </div>
                                 </a>
-                                <a disabled={this.state.disable}  href={this.state.fbLinks}  target='_blank' onClick={this.fbshare}>
+                                <a disabled={this.state.disable}  href="https://www.facebook.com/JobStreamApp.Philippines"  target='_blank' onClick={this.fbshare}>
                                 
                                 <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5,  opacity:this.state.opacity}}>
@@ -406,7 +392,7 @@ class Widget2 extends React.Component {
 								</Drawer>
 
 
-                {/* <Modal
+                <Modal
                     visible={this.state.fbmodal}
                     // onOk={this.handleOk}
                     // onCancel={this.handleCancel}
@@ -418,7 +404,7 @@ class Widget2 extends React.Component {
                     
                    
                     
-                </Modal> */}
+                </Modal>
 
 						</div>
 
