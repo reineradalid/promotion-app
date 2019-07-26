@@ -89,12 +89,16 @@ class Widget2 extends React.Component {
               des:'Download App',
           }
         ], 
+        signUp_status : false,
+        signUp_icon_color: 'red',
+        signUp_icon : 'close-circle'
       };
   }
 
   componentDidMount(){
-      // this.setState({ disable : this.asd})
+    this.verifyQS();
     
+
     if (isMobile) {
         if(isAndroid){
           this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
@@ -120,25 +124,40 @@ class Widget2 extends React.Component {
 
       };
 
-        showModal = () => {
+      showModal = () => {
         this.setState({
           visible: true,
         });
       };
 
+      verifyQS =() =>{
+
+        if(sessionStorage.getItem('token') !== null){
+          console.log(sessionStorage.getItem('user_data'));
+          this.setState({signUp_status: true});
+          this.setState({ signUp_icon: 'check-circle' }) 
+          this.setState({ signUp_icon_color: '#2ecc71' })
+          
+        }else{
+          console.log('Empty session');
+        }
+
+        
+      
+      }
+
+
+
      
       fbLike =() =>{
-
 
         if(this.state.disable == true){
          console.log("Please Sign up")
         }else{
-          var newArr = this.state.entries;
-        
-          newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test'});
-         
-          this.setState({some:'val',entries:newArr})
-          console.log(this.state.entries)
+          // var newArr = this.state.entries;
+          // newArr.push({ 'name': " test ", 'action':"Like", 'email': 'test@test'});  
+          // this.setState({some:'val',entries:newArr})
+          // console.log(this.state.entries)
   
           this.state.fbLikeicon == 'close-circle' ?  
           this.setState({ fbLikeicon: 'check-circle' }) 
@@ -258,7 +277,7 @@ class Widget2 extends React.Component {
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , }}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Sign up </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.sgcolor,  }}  type={this.state.icon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.signUp_icon_color}}  type={this.state.signUp_icon} /></Col>               
                                   </Row>
                                 </div>
                               </a>

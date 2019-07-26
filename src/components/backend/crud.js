@@ -73,7 +73,7 @@ export function Register(value){
         var vals = JSON.parse(val);
         // console.log(val);
 
-        return fetch('https://jobstreamapp.com:'+port+'/api/'+endpoint,{
+        return fetch('https://jobstreamapp.com:'+port+'/api'+endpoint,{
         method: 'POST',
         headers: {
               'Content-Type': 'application/json',

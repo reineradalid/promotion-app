@@ -9,9 +9,13 @@ import { Form,
         Col} from 'antd';
 import Widget from './widget.js';
 import {Register} from '../backend/crud';
+import { sessionService } from 'redux-react-session';
 
 class Signup extends React.Component {
-    state={
+    
+  constructor(props, context) {
+    super(props, context);
+    this.state={
         img :"https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         confirmDirty: false,
         autoCompleteResult: [],
@@ -19,11 +23,18 @@ class Signup extends React.Component {
         rTitle:'',
         rSubTitle:'',
         rType:'',
-        visibles:false,
+        v_alert:false,
         asdddd:true,
-    }
+        user:{
+          email: '',
+          fname: '',
+          lname: ''
+        }
 
-    handleSubmit = e => {
+    }
+  }
+
+      handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
           if (!err) {
@@ -32,21 +43,38 @@ class Signup extends React.Component {
             var res = Register({values});
             res.then(data=>{
                 console.log(data);
+                if(data.success === true){
+                    this.setState({  v_alert:true });
+                    this.setState({  rSubTitle:'Please wait while verifying your entry' });
+                    this.setState({  rType:'success' });
+                    this.setState({  rTitle:'Success' });
+                  setTimeout(() => {   
+                    this.alertCancels();
+                  }, 2000);
+
+
+                  const { token } = data.result.user.sessionToken;
+                  sessionStorage.setItem('token', token);
+                  sessionStorage.setItem('user_data', data.result.user);
+
+
+                }else{
+                    this.setState({  v_alert:true });
+                    this.setState({  rSubTitle:data.error.message });
+                    this.setState({  rType:'error' });
+                    this.setState({  rTitle:'Ooppss..' });
+                  setTimeout(() => {   
+                    this.alertCancels();
+                  }, 2000);
+                }
             })
             
-            
-            setTimeout(() => {   
-                this.setState({  visible:true });
-                this.setState({  rSubTitle:'' });
-                this.setState({  rType:'success' });
-                this.setState({  rTitle:'Success' });
-              }, 1000);
 
           }else{
-            this.setState({  visible:true });
-            this.setState({  rSubTitle:'Try Different account' });
+            this.setState({  v_alert:true });
+            this.setState({  rSubTitle:'Please check your credentials' });
             this.setState({  rType:'warning' });
-            this.setState({  rTitle:'Account existed' });
+            this.setState({  rTitle:'Invalid Form' });
           }
         });
       };
@@ -57,15 +85,23 @@ class Signup extends React.Component {
           visible: false,
         });
       };
-      handleCancels = e => {
+
+      alertCancels = e => {
         console.log(e);
         this.setState({
-          visibles: false,
+          v_alert: false,
         });
       };
-      showModal = () => {
+      alertshowModal = () => {
         this.setState({
-          visibles: true,
+          v_alert: true,
+        });
+      };
+
+      alerthandleOk = e => {
+        console.log(e);
+        this.setState({
+          v_alert: false,
         });
       };
 
@@ -76,10 +112,10 @@ class Signup extends React.Component {
         });
       };
       handleLogin = () => {
-    //     this.setState({
-    //    disable:false,
-       
-    //     });
+        //     this.setState({
+        //    disable:false,
+          
+        //     });
         console.log(this.state.asdddd)
       };
 
@@ -208,10 +244,11 @@ class Signup extends React.Component {
 
                 <Modal
                    
-                   visible={this.state.visible}
-                   onCancel={this.handleCancels}
-                   footer={null}
-                   style={{ maxHeight: '20vh',
+                   visible={this.state.v_alert}
+                   onOk={this.alerthandleOk}
+                   onCancel={this.alerthandleCancels}
+                  //  footer={null}
+                   style={{ maxHeight: '15vh',
                            maxWidth:'40vh' }}
                    >
                         <Result
@@ -220,8 +257,8 @@ class Signup extends React.Component {
                             subTitle={this.state.rSubTitle}
                             extra={[
                             // <Button type="primary" key="console">
-                            //     Copy
-                            // </Button>,
+                            //     OK
+                            // </Button>
                             
                             ]}
                         />
