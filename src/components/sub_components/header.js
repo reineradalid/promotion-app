@@ -3,41 +3,41 @@ import { PageHeader, Typography, Row, Col, Avatar} from 'antd';
 
 const { Paragraph } = Typography;
 
-const routes = [
-  {
-    path: 'index',
-    breadcrumbName: 'First-level Menu',
-  },
-  {
-    path: 'first',
-    breadcrumbName: 'Second-level Menu',
-  },
-  {
-    path: 'second',
-    breadcrumbName: 'Third-level Menu',
-  },
-];
+// const routes = [
+//   {
+//     path: 'index',
+//     breadcrumbName: 'First-level Menu',
+//   },
+//   {
+//     path: 'first',
+//     breadcrumbName: 'Second-level Menu',
+//   },
+//   {
+//     path: 'second',
+//     breadcrumbName: 'Third-level Menu',
+//   },
+// ];
 
-const content = (
-  <div className="content">
-    <Paragraph>
-      Ant Design interprets the color system into two levels: a system-level color system and a
-      product-level color system.
-    </Paragraph>
+// const content = (
+//   <div className="content">
+//     <Paragraph>
+//       Ant Design interprets the color system into two levels: a system-level color system and a
+//       product-level color system.
+//     </Paragraph>
     
-  </div>
-);
+//   </div>
+// );
 
 const user_info = (
     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" style={{backgroundColor: '#fff'}}/>
 );
 
-const extraContent = (
-  <img
-    src="https://gw.alipayobjects.com/mdn/mpaas_user/afts/img/A*KsfVQbuLRlYAAAAAAAAAAABjAQAAAQ/original"
-    alt="content"
-  />
-);
+// const extraContent = (
+//   <img
+//     src="https://gw.alipayobjects.com/mdn/mpaas_user/afts/img/A*KsfVQbuLRlYAAAAAAAAAAABjAQAAAQ/original"
+//     alt="content"
+//   />
+// );
 
 class HeadLord extends React.Component {
 

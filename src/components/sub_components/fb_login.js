@@ -9,11 +9,18 @@ class facebookLogin extends Component {
      userId: '',
      name: '',
      email: '',
-     picture: ''
+     picture: '',
+     data:[]
+   }
+
+
+   componentDidMount(){
+    
    }
 
   responseFacebook = response => {
     console.log(response);
+    this.setState({ data: response})
   }
 
   componentClicked = () => console.log("clicked");

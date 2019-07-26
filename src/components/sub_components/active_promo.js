@@ -1,8 +1,8 @@
 import React from 'react';
 import {Collapse} from 'antd';
-import {setRecord, getRecord} from '../backend/crud';
-import Item from 'antd/lib/list/Item';
-const { Panel } = Collapse;
+// import {setRecord, getRecord} from '../backend/crud';
+// import Item from 'antd/lib/list/Item';
+// const { Panel } = Collapse;
 
 const Items = null;
 

@@ -237,7 +237,7 @@ class Signup extends React.Component {
                     </Form.Item>
                     <Form.Item >
                         <Button id="confirm_btn" type="primary" htmlType="submit">Sign Up!</Button><br/>
-                        <a onClick={this.showModal}> Sign in </a>
+                      
                     </Form.Item>  
                 </Form>
 
