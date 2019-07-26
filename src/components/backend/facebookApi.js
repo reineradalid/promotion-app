@@ -1,1 +1,1 @@
-export const fb_cred = {name: "Rex Tan", email: "test@email.com"};
+export const fb_cred = {name: "Rex Tan", email: "tests@email.com"};
