@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/mlbb/static/css/main.33b0d9fd.chunk.css",
-    "main.js": "/mlbb/static/js/main.c6343378.chunk.js",
-    "main.js.map": "/mlbb/static/js/main.c6343378.chunk.js.map",
-    "runtime~main.js": "/mlbb/static/js/runtime~main.942e5869.js",
-    "runtime~main.js.map": "/mlbb/static/js/runtime~main.942e5869.js.map",
-    "static/css/2.676dc204.chunk.css": "/mlbb/static/css/2.676dc204.chunk.css",
-    "static/js/2.82fa9cab.chunk.js": "/mlbb/static/js/2.82fa9cab.chunk.js",
-    "static/js/2.82fa9cab.chunk.js.map": "/mlbb/static/js/2.82fa9cab.chunk.js.map",
-    "index.html": "/mlbb/index.html",
-    "precache-manifest.afc3c0f234436c1b8f5ee5e9bc642cd3.js": "/mlbb/precache-manifest.afc3c0f234436c1b8f5ee5e9bc642cd3.js",
-    "service-worker.js": "/mlbb/service-worker.js",
-    "static/css/2.676dc204.chunk.css.map": "/mlbb/static/css/2.676dc204.chunk.css.map",
-    "static/css/main.33b0d9fd.chunk.css.map": "/mlbb/static/css/main.33b0d9fd.chunk.css.map",
-    "static/media/logo.png": "/mlbb/static/media/logo.e2f07055.png"
+    "main.css": "/promotion-app/static/css/main.33b0d9fd.chunk.css",
+    "main.js": "/promotion-app/static/js/main.d8d62af9.chunk.js",
+    "main.js.map": "/promotion-app/static/js/main.d8d62af9.chunk.js.map",
+    "runtime~main.js": "/promotion-app/static/js/runtime~main.17e6432c.js",
+    "runtime~main.js.map": "/promotion-app/static/js/runtime~main.17e6432c.js.map",
+    "static/css/2.676dc204.chunk.css": "/promotion-app/static/css/2.676dc204.chunk.css",
+    "static/js/2.e321bda9.chunk.js": "/promotion-app/static/js/2.e321bda9.chunk.js",
+    "static/js/2.e321bda9.chunk.js.map": "/promotion-app/static/js/2.e321bda9.chunk.js.map",
+    "index.html": "/promotion-app/index.html",
+    "precache-manifest.077818df5e0c376cab98f03bbccb714e.js": "/promotion-app/precache-manifest.077818df5e0c376cab98f03bbccb714e.js",
+    "service-worker.js": "/promotion-app/service-worker.js",
+    "static/css/2.676dc204.chunk.css.map": "/promotion-app/static/css/2.676dc204.chunk.css.map",
+    "static/css/main.33b0d9fd.chunk.css.map": "/promotion-app/static/css/main.33b0d9fd.chunk.css.map",
+    "static/media/logo.png": "/promotion-app/static/media/logo.e2f07055.png"
   }
 }
