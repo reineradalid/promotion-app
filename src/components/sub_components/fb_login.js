@@ -10,20 +10,29 @@ class facebookLogin extends Component {
      name: '',
      email: '',
      picture: '',
-     data:[]
+     data:[{test:'test'}]
    }
 
 
-   componentDidMount(){
+  //  async componentDidMount(){
+  //   console.log('esd');
     
-   }
+  //   await console.log(this.state.data);
+    
+  //  }
 
   responseFacebook = response => {
-    console.log(response);
-    this.setState({ data: response})
+   console.log(response);
+    this.setState({ name: response.name})
+    // this.setState({ email: response.email})
+    
+    
   }
 
-  componentClicked = () => console.log("clicked");
+  componentClicked = () =>{
+    console.log(this.state.name)
+    console.log(this.state.email)
+  }
 
    render() {
      let fbContent;
