@@ -23,6 +23,8 @@ import {
       } from "react-device-detect";
 import Signup from './signup.js';
 import FacebookLogin from './fb_login.js';
+import {fb_cred} from '../backend/facebookApi.js';
+import {Test} from '../backend/crud';
 
 
 
@@ -129,6 +131,7 @@ class Widget2 extends React.Component {
 
       componentWillMount(){
         this.verifyQS();
+        console.log(fb_cred.name);
       }
 
       verifyQS = async() =>{
@@ -420,8 +423,8 @@ class Widget2 extends React.Component {
                 <Modal
                     visible={this.state.fbmodal}
                     // onOk={this.handleOk}
-                    // onCancel={this.handleCancel}
-                    closable={false}
+                    onCancel={this.closefbLogin}
+                    closable={true}
                     footer={null}
                     style={{ maxHeight: '10vh',
                             maxWidth:'40vh' }}

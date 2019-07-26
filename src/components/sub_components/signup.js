@@ -30,7 +30,6 @@ class Signup extends React.Component {
           fname: '',
           lname: ''
         }
-
     }
   }
 
