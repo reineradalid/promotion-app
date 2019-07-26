@@ -30,7 +30,6 @@ class Signup extends React.Component {
           fname: '',
           lname: ''
         }
-
     }
   }
 
@@ -53,9 +52,11 @@ class Signup extends React.Component {
                   }, 2000);
 
 
-                  const { token } = data.result.user.sessionToken;
+                  var token = data.result.user.sessionToken;
                   sessionStorage.setItem('token', token);
-                  sessionStorage.setItem('user_data', data.result.user);
+                  sessionStorage.setItem('user_fname', data.result.user.firstName);
+                  sessionStorage.setItem('user_lname', data.result.user.lastName);
+                  sessionStorage.setItem('user_email', data.result.user.email);
 
 
                 }else{

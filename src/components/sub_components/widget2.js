@@ -22,6 +22,10 @@ import {
         isAndroid
       } from "react-device-detect";
 import Signup from './signup.js';
+import FacebookLogin from './fb_login.js';
+import {fb_cred} from '../backend/facebookApi.js';
+import {Test} from '../backend/crud';
+
 
 
 
@@ -63,7 +67,18 @@ class Widget2 extends React.Component {
         lcolor:'red',
         disable:true,
         opacity:.7,
+        
+
+        signUp_status : false,
+        signUp_icon_color: 'red',
+        signUp_icon : 'close-circle',
+        step_status_disable: true,
+        dl_icon_color: 'red',
+        dl_icon: 'close-circle',
+        loginVisible: false,
         fbmodal:false,
+
+
         entries:[
           {
             id:'1',
@@ -89,67 +104,77 @@ class Widget2 extends React.Component {
               key:4,
               des:'Download App',
           }
-        ], 
-        signUp_status : false,
-        signUp_icon_color: 'red',
-        signUp_icon : 'close-circle'
-      };
-  }
-
-  componentDidMount(){
-    this.verifyQS();
-    
-
-    if (isMobile) {
-        if(isAndroid){
-          this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
-          console.log(this.state.dlLink)
-        }else{
-          console.log('ios')
-          this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
-        }
-        console.log('mobile')     
-    }else{
+        ],
       
-      this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
-      console.log(this.state.dlLink)
-    }
-
-  
+      };
   }
-    
-      change = () => {
-       
-        this.setState({ opacity: 1 });
-        this.setState({ disable:false });
 
-      };
+      componentDidMount(){
 
-      showModal = () => {
-        this.setState({
-          visible: true,
-        });
-      };
+        if (isMobile) {
+            if(isAndroid){
+              this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' })  
+              console.log(this.state.dlLink)
+            }else{
+              console.log('ios')
+              this.setState({ dlLink: 'https://apps.apple.com/ph/app/jobstream-app/id1254453926' })
+            }
+            console.log('mobile')     
+        }else{
+          
+          this.setState({ dlLink:'https://play.google.com/store/apps/details?id=com.jobstreaminc.jobstreamapp&hl=en' }) 
+          console.log(this.state.dlLink)
+        }
 
-      verifyQS =() =>{
+      
+      }
+
+      componentWillMount(){
+        this.verifyQS();
+        console.log(fb_cred.name);
+      }
+
+      verifyQS = async() =>{
 
         if(sessionStorage.getItem('token') !== null){
-          console.log(sessionStorage.getItem('user_data'));
-          this.setState({signUp_status: true});
-          this.setState({ signUp_icon: 'check-circle' }) 
-          this.setState({ signUp_icon_color: '#2ecc71' })
+          //console.log(sessionStorage.getItem('user_data'));
+          this.setState({ signUp_icon: 'check-circle' });
+          this.setState({ signUp_icon_color: '#2ecc71' });
+          await this.setState({signUp_status: true});  
+          this.steps_enabler();  
           
         }else{
           console.log('Empty session');
         }
-
-        
-      
       }
 
+      async steps_enabler (){
+        console.log(this.state.signUp_status);
+        if(this.state.signUp_status === true){
+            this.setState({disable: false});
+            this.setState({opacity: 1});
 
+        }
 
-     
+      }
+        
+      download =() =>{
+
+        // var newArr = this.state.entries;
+        // newArr.push({ 'name': " test ", 'action':"Download" ,'email': 'test@test'});
+        // this.setState({some:'val',entries:newArr})
+        // console.log(this.state.entries)
+
+        this.state.dl_icon == 'close-circle' ?  
+        this.setState({ dl_icon: 'check-circle' }) 
+       :
+       console.log('done')
+       this.state.dl_icon_color == 'red' ?  
+       this.setState({ dl_icon_color: '#428bca' }) 
+       :
+       console.log('done')
+      }
+
       fbLike =() =>{
 
         if(this.state.disable == true){
@@ -192,39 +217,30 @@ class Widget2 extends React.Component {
        this.setState({ scolor: '#428bca' }) 
        :
        console.log('done')
-      }
+      } 
 
-
-     
-      
-      
-      download =() =>{
-
-        var newArr = this.state.entries;
-        
-        newArr.push({ 'name': " test ", 'action':"Download" ,'email': 'test@test'});
+      change = () => {
        
-        this.setState({some:'val',entries:newArr})
-        console.log(this.state.entries)
+        this.setState({ opacity: 1 });
+        this.setState({ disable:false });
 
-        this.state.downloadIcon == 'close-circle' ?  
-        this.setState({ downloadIcon: 'check-circle' }) 
-       :
-       console.log('done')
-       this.state.dcolor == 'red' ?  
-       this.setState({ dcolor: '#428bca' }) 
-       :
-       console.log('done')
-      }
+      };
+       
+      showModal = () => {
+        this.setState({
+          loginVisible: true,
+        });
+      };
 
-      handleCancel = e => {
+      loginHandleCancel = e => {
         console.log(e);
         this.setState({
-          visible: false,
+          loginVisible: false,
         });
 			};
 			
 			showDrawer = () => {
+        this.showfbLogin();
 				this.setState({
 					visible_drawer: true,
         });
@@ -233,11 +249,22 @@ class Widget2 extends React.Component {
 				});
 			};
 
-			onClose = () => {
+			closeDrawer = () => {
 				this.setState({
 					visible_drawer: false,
 				});
-			};
+      };
+      
+      showfbLogin = () => {
+        this.setState({
+					fbmodal: true,
+				});
+      }
+      closefbLogin = () =>{
+        this.setState({
+					fbmodal: false,
+				});
+      }
   
     render() {
         return (
@@ -285,17 +312,18 @@ class Widget2 extends React.Component {
                                   </Row>
                                 </div>
                               </a>
-                              <a   disabled={this.state.disable}  href={this.state.dlLink} target="_blank" onClick={this.download}>
+
+                              <a disabled={this.state.step_status_disable}  href={this.state.dlLink} target="_blank" onClick={this.download}>
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 , opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}> Download </h2></Col> 
                                       <Divider type="vertical" />
-                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dcolor, opacity:this.state.opacity }}  type={this.state.downloadIcon} /></Col>               
+                                    <Col style={{alignItems:'center'}}   span={2}><Icon style={{fontSize:20, color:this.state.dl_icon_color, opacity:this.state.opacity }}  type={this.state.dl_icon} /></Col>               
                                   </Row>
                                   </div>
-                                </a>
-                                <a disabled={this.state.disable} href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}> 
-                                
+                              </a>
+
+                              <a disabled={this.state.disable} href="https://www.facebook.com/JobStreamApp.Philippines" target='_blank' onClick={this.fbLike}> 
                                   <div style={{marginBottom:10}}>  
                                   <Row   type="flex" justify="space-around" align="middle"  style={{border:'1px solid gray',borderRadius:5 ,  opacity:this.state.opacity}}>
                                     <Col   span={20}><h2 style={{ float:'left', marginLeft:20}}>Like Facebook page</h2></Col> 
@@ -323,9 +351,9 @@ class Widget2 extends React.Component {
                
               </div>            
                 <Modal
-                    visible={this.state.visible}
+                    visible={this.state.loginVisible}
                     // onOk={this.handleOk}
-                    onCancel={this.handleCancel}
+                    onCancel={this.loginHandleCancel}
                     footer={null}
                     style={{ maxHeight: '10vh',
                             maxWidth:'40vh' }}
@@ -371,7 +399,7 @@ class Widget2 extends React.Component {
                     
                 </Modal>
 
-								<Drawer title="Create a new account" width={430} onClose={this.onClose}visible={this.state.visible_drawer}>
+								<Drawer title="Create a new account" width={430} onClose={this.closeDrawer}visible={this.state.visible_drawer}>
 									<div
 										style={{
 											position: 'absolute',
@@ -395,15 +423,17 @@ class Widget2 extends React.Component {
                 <Modal
                     visible={this.state.fbmodal}
                     // onOk={this.handleOk}
-                    // onCancel={this.handleCancel}
-                    closable={false}
+                    onCancel={this.closefbLogin}
+                    closable={true}
                     footer={null}
                     style={{ maxHeight: '10vh',
                             maxWidth:'40vh' }}
                     >
+                      <Col justify="center" align="middle" type="text" style={{height: "30px;"}}>
+                          <FacebookLogin/>
+                      </Col>
                     
-                   
-                    
+
                 </Modal>
 
 						</div>
@@ -414,9 +444,5 @@ class Widget2 extends React.Component {
     }
 }
 
-function openInNewTab() {
-  var win = window.open('https://google.com', '_blank');
-  win.focus();
-}
 
 export default Widget2;

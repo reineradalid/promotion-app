@@ -1,4 +1,4 @@
-import { access } from 'fs';
+import axios from 'axios';
 
 export function getRecord() {
 
@@ -23,7 +23,6 @@ export function Register(value){
   var host = 'jobstreamapp.com';
   var endpoint = '/jobseeker/signup';
 
-  
 
   function timestamp(){
     var date = new Date();
@@ -101,27 +100,42 @@ export function Register(value){
         // }else{  
         //   return false;
         // }
+        delete value.values["password"];
+        delete value.values["confirm"];
+        var val = JSON.stringify(value.values);
+        insert_data(val);
         return data;
       });
       return getstatus;
 
   });
 
-
-
-  var val = JSON.stringify(value.values);
-
-
-
-  // return fetch('http://172.104.62.175:1338/leads/classes/MLBB',{
-  //   method: 'POST',
-  //   headers: {
-  //         'Content-Type': 'aplication/json',
-  //         'X-Parse-Application-Id': 'PARSE17210462175'
-  //       },
-  //   body : JSON.parse(val)
-  //   })
-  //    .then((data)=>data.json())
-  //    .then((res)=>res)
 }
+
+async function insert_data(val){
+  const result = await fetch('http://172.104.62.175:1338/leads/classes/STEPS_ENTRIES',{
+    method: 'POST',
+    headers: {
+          'Content-Type': 'Application/json',
+          'X-Parse-Application-Id': 'PARSE17210462175'
+        },
+    body : val
+    })
+    .then((data)=>data.json())
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+    return result;
+
+}
+
+async function insert_entries(point, count){
+ 
+}
+
+
 

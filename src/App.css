@@ -10,6 +10,17 @@
   */
 }
 
+.fb_btn_login{
+  background-color: #4267B2 !important;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+.fb_btn_login > i{
+  margin-right: 10px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
