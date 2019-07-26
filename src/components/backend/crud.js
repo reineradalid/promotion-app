@@ -110,9 +110,6 @@ export function Register(value){
 
 
   var val = JSON.stringify(value.values);
-
-
-
   // return fetch('http://172.104.62.175:1338/leads/classes/MLBB',{
   //   method: 'POST',
   //   headers: {
