@@ -53,7 +53,7 @@ class Signup extends React.Component {
                   }, 2000);
 
 
-                  const { token } = data.result.user.sessionToken;
+                  var token = data.result.user.sessionToken;
                   sessionStorage.setItem('token', token);
                   sessionStorage.setItem('user_data', data.result.user);
 
