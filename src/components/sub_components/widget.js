@@ -9,22 +9,21 @@ import {Card,
         Input,
         Checkbox,
         Button,
-        Popconfirm
+        
       } from 'antd';
-import Signup from './signup.js';
+
 
 
 
   
-  const EditableContext = React.createContext();
+  // const EditableContext = React.createContext();
 
-  const EditableRow = ({ form, index, ...props }) => (
-    <EditableContext.Provider value={form}>
-      <tr {...props} />
-    </EditableContext.Provider>
-  );
+  // const EditableRow = ({ form, index, ...props }) => (
+  //   <EditableContext.Provider value={form}>
+  //     <tr {...props} />
+  //   </EditableContext.Provider>
+  // );
 
-  const EditableFormRow = Form.create()(EditableRow);
 
   
 class Widget extends React.Component {
