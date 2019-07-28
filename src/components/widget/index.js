@@ -1,19 +1,8 @@
 import React from 'react';
-import {Card,
-        Icon,
-        Row,
-        Col,  
-        Modal,
-        Divider,
-        Drawer,
-      } from 'antd';
-import {
-        isMobile,
-        isAndroid
-      } from "react-device-detect";
-import Signup from './signup.js';
-import FacebookLogin from './fb_login.js';
-import {fb_cred} from '../backend/facebookApi.js';
+import {Card,Icon,Row,Col,Modal,Divider,Drawer,} from 'antd';
+import {isMobile,isAndroid} from "react-device-detect";
+import Signup from '../sub_components/signup.js';
+import FacebookLogin from '../sub_components/fb_login.js';
   
 class Widget2 extends React.Component {
 
@@ -97,7 +86,6 @@ class Widget2 extends React.Component {
 
       componentWillMount(){
         this.verifyQS();
-        console.log(fb_cred.name);
       }
 
       verifyQS = async() =>{
@@ -127,7 +115,7 @@ class Widget2 extends React.Component {
       download =() =>{
        
         var newArr = this.state.entries;
-        newArr.push({ 'name': fb_cred.name, 'action':"Download" ,'email': 'test@test' , 'worth': 3});
+        newArr.push({ 'name': 'Rex Tan', 'action':"Download" ,'email': 'test@test' , 'worth': 3});
         this.setState({some:'val',entries:newArr})
         console.log(this.state.entries)
 
@@ -145,7 +133,7 @@ class Widget2 extends React.Component {
 
      
           var newArr = this.state.entries;
-          newArr.push({ 'name': fb_cred.name, 'action':"Like", 'email': fb_cred.email, 'worth': 1});  
+          newArr.push({ 'name': 'Rex Tan', 'action':"Download" ,'email': 'test@test', 'worth': 1});  
           this.setState({some:'val',entries:newArr})
           console.log(this.state.entries )
           console.log(this.state.some )
@@ -159,17 +147,14 @@ class Widget2 extends React.Component {
           :
           console.log('done')
 
-        }
+      }
        
-      
-      
-
       fbshare =() =>{
       
 
         var newArr = this.state.entries;
         
-        newArr.push({ 'name':fb_cred.name, 'action':"Share" ,'email': fb_cred.email,  'worth': 1});
+        newArr.push({ 'name': 'Rex Tan', 'action':"Download" ,'email': 'test@test',  'worth': 1});
        
         this.setState({some:'val',entries:newArr})
         console.log(this.state.entries)
@@ -226,6 +211,7 @@ class Widget2 extends React.Component {
 					fbmodal: true,
 				});
       }
+
       closefbLogin = () =>{
         this.setState({
 					fbmodal: false,
@@ -237,22 +223,12 @@ class Widget2 extends React.Component {
             <div  style={{ flex:1, alignItems:'center', justifyContent:'center ', overflowY:'hidden'}} id='cardH'>
               <div style={{ flex:1, alignItems:'center', justifyContent:'center ', marginTop:5,marginBottom:5, marginLeft:5, marginRight:5, overflowX:'hidden', overflowY:'hidden'}} id='cardH'>     
                 <Col  type="flex" justify="center" align="middle">
-                  <Card
-                      style={{ alignItems:'center', 
-                              justifyContent:'center', 
-                              width:'100%', 
-                              borderRadius:10,
-                              maxHeight: '200vh',
-                              maxWidth:'60vh' 
-                              }}
-                              title={ <div><img style={{maxWidth:120}}  src={require('../assets/logo.png')} alt="" /></div>}             
-                      activeTabKey={this.state.key}
-                      onTabChange={key => {
-                          this.onTabChange(key, 'key');
-                      }}
-                    
-                      >
-                          <img style={{width:'100%'}} src={this.state.img} alt="" />
+                  <Card style={{ alignItems:'center', justifyContent:'center', width:'100%', borderRadius:10, maxHeight: '200vh', maxWidth:'60vh'}}
+                        title={ <div><img style={{maxWidth:120}}  src={require('../assets/logo.png')} alt="" /></div>}             
+                        activeTabKey={this.state.key}
+                        onTabChange={key => { this.onTabChange(key, 'key')}} >
+                        
+                      <img style={{width:'100%'}} src={this.state.img} alt="" />
                      
                       <Divider/>
                       <div style={{margin:20}}>
@@ -262,6 +238,7 @@ class Widget2 extends React.Component {
                               )}                          
                           </div>
                       </div>
+                      
                       <div style={{marginBottom:10}}>
                           <div style={{textAlign:'left', color:'gray'}}>
                             
@@ -303,9 +280,7 @@ class Widget2 extends React.Component {
                                     <Col style={{alignItems:'center', }}  span={2}><Icon style={{fontSize:20, marginTop:7, color:this.state.scolor,  opacity:this.state.opacity}} type={this.state.fbshareicon}/></Col>               
                                   </Row>
                                 </div>
-                                </a>
-                                {/* <Button onClick={this.change} type="primary">Click</Button> */}
-                                            
+                                </a> 
                           </div>
                       </div>        
                   </Card>
@@ -315,20 +290,8 @@ class Widget2 extends React.Component {
            
 
 								<Drawer title="Create a new account" width={430} onClose={this.closeDrawer}visible={this.state.visible_drawer}>
-									<div
-										style={{
-											position: 'absolute',
-											left: 0,
-											top: 0,
-											width: '100%',
-											padding: '10px 16px',
-											background: '#fff',
-											textAlign: 'right',
-										}}
-									>
-
+									  <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', padding: '10px 16px', background: '#fff', textAlign: 'right',}}>
 											<Col align="middle" type="flex" justify="center">
-												
 												<Signup />
 											</Col>
 										</div>
@@ -337,13 +300,12 @@ class Widget2 extends React.Component {
 
                 <Modal
                     visible={this.state.fbmodal}
-                    // onOk={this.handleOk}
                     onCancel={this.closefbLogin}
                     closable={true}
                     footer={null}
-                    style={{ maxHeight: '10vh',
-                            maxWidth:'40vh' }}
-                    >
+                    style={{ maxHeight: '10vh', maxWidth:'40vh' }}
+                >
+                  
                       <Col justify="center" align="middle" type="text" style={{height: "30px;"}}>
                           <FacebookLogin/>
                       </Col>

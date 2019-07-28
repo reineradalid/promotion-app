@@ -1,14 +1,11 @@
 import React from 'react';
 import Dash from './components/dashboard.js'
-import Widget2 from './components/sub_components/widget2.js';
-
-import './App.css';
-
+import Widget from './components/widget';
 
 function App() {
   return (
     <div className="App">
-     <Widget2/>
+     <Widget/>
     </div>
   );
 }
