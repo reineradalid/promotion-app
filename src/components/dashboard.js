@@ -1,11 +1,11 @@
 import React from 'react';
 import HeadLord from './sub_components/header.js'
-import Sidebar from './sidebar.js'
+import Sidebar from './sub_components/sidebar.js'
 
 import {Button, Icon, Layout, Row, Col, Statistic} from 'antd';
 
 import Active_list from './sub_components/active_promo.js';
-import {getRecord, testing} from './backend/crud.js';
+import {getRecord, testing} from '../API/crud.js';
 import { configConsumerProps } from 'antd/lib/config-provider';
 // import { useCookies } from 'react-cookie';
 

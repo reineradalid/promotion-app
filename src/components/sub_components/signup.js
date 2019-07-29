@@ -1,15 +1,6 @@
 import React from 'react';
-import { Form,  
-         Input, 
-         Button,
-         Modal, 
-         Result, 
-         Icon,
-        Checkbox,
-        Col} from 'antd';
-import Widget from './widget.js';
-import {Register} from '../backend/crud';
-import { sessionService } from 'redux-react-session';
+import { Form, Input, Button,Modal, Result, Icon, Col} from 'antd';
+import {Register} from '../../API/crud';
 
 class Signup extends React.Component {
     
@@ -302,17 +293,6 @@ class Signup extends React.Component {
                         </Button>
                         </Col>
                       </Form.Item>
-                      {/* <Form.Item >
-                        
-                        <a style={{float:'right'}} className="login-form-forgot" href="">
-                            Forgot password
-                        </a>
-                    
-                      </Form.Item>
-                     
-                      <Form.Item style={{float:'right', marginTop:-30}}>
-                          Or <a href=""> register now!</a>
-                      </Form.Item>    */}
                     </Form>
                     
                 </Modal>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import '../../App.css';
+import {useSelector, useDispatch} from 'react-redux';
+import {signIn} from '../../Action';
+import '../assets/style.css';
 
 class facebookLogin extends Component {
 
