@@ -5,7 +5,7 @@
   "homepage": "http://reineradalid.github.io/promotion-app",
   "dependencies": {
     "antd": "^3.20.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "crypto-js": "^3.1.9-1",
     "hmac512hmac512": "^3.2.6",
     "install": "^0.13.0",
