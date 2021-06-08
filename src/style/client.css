@@ -1,0 +1,245 @@
+.client-container{
+    width: 100vw;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.clients-title-container{
+    width: 40%;
+    background-color: #4a5562 ;
+    display: flex;
+    /* padding: 40px 20% 40px 0px; */
+    padding-top: 40px;
+    padding-left: 20%;
+    flex-direction: column;
+    padding-bottom: 0%;
+}
+.clients-content-container{
+    padding: 40px 3%;
+    padding-bottom: 0;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.clients-content-container-md{
+    display: none;
+}
+
+.clients-content-container-sm{
+    display: none;
+    padding: 40px 2em;
+    width:100%;
+}
+.header{
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.clients-content-list{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.clients-list-container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.clients-list-container p{
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    transition: font-size 300ms ease;
+}
+
+.clients-list-container:hover p{
+    font-size: 22px;
+}
+
+.diamond{
+    font-size:25px;
+    color:#4a5562 !important; 
+    margin-right:-13px;
+    display: none;
+    transition: display 500ms ease;
+}
+
+
+.clients-list-container:hover .diamond{
+    display: flex !important;
+}
+
+
+.clients-content{
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 20%;
+}
+
+.clients-content-title{
+    font-size: 30px;
+    margin-bottom: 10px; 
+    color: #000000;
+    font-weight: 400;
+}
+
+.clients-content-desc{
+    font-size:20px;
+    margin-top: 0;
+    max-width: 70%;
+    color: #4a5562;
+    font-weight: 400;
+}
+
+.clients-content-bnt{
+    padding:18px 30px;
+    color: #fff;
+    background-color: #4a5562;
+    font-size: 15px;
+    font-weight: 500;
+    border:1px solid #4a5562;
+    cursor: pointer;
+}
+
+.clients-content-bnt:hover{
+    color: #4a5562;
+    background-color: #fff;
+    border:1px solid #4a5562;
+    transition: all 200ms ease;
+}
+
+.client-sm {
+    display: none;
+}
+
+.client-lg{
+    display: flex;
+    width: 100vw;
+    min-height: 20vh;
+    flex-direction: row;
+}
+
+
+
+@media only screen and (max-width: 1366px){
+    .client-container{
+        padding:0em 10% ;
+    }
+}
+
+@media only screen and (max-width: 1280px){
+    
+}
+
+@media only screen and (max-width:768px){
+    .client-container{
+        width: 100vw;
+        min-height: 50vh;
+        display: flex;
+        padding:0em 0px !important;
+    }
+    
+    .clients-title-container{
+        
+        padding: 40px 3%;
+        width: 40%;
+    }
+
+    .clients-content-container{
+        padding: 40px 1em;
+        width: 100%;
+        display:none
+    }
+
+    .clients-content-container-md{
+        display: flex;
+        padding:0px 1em;
+        width:60%;
+        justify-content: center;
+    }
+    .clients-content-desc{
+        max-width: 100%;
+        color: #4a5562;
+    }
+    .carousel-dots{
+        margin-top: 10px;
+    }
+    .clients-content{
+        padding-right: 0%;
+        width: 100%;
+    }
+
+    .diamond{
+        display:none !important;
+        position: relative;
+        z-index: -999;
+    }
+  
+}
+
+
+@media only screen and (max-width: 540px){
+    .clients-content-container-md{
+        display: none;
+        padding: 40px 1em;
+        width:50%;
+    }
+
+    .client-lg {
+        display: none;
+    }
+
+    .client-container{
+        width: 100vw;
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        
+    
+    }
+    .clients-content-container-sm{
+        display: flex;
+        padding: 20px 1em;
+        width:100%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .clients-title-container{
+        width: 100%;
+        display: flex;
+       justify-content:center;
+       align-items: center;
+       padding:3em 10%;
+    }
+    .header{
+        font-size: 20px;
+        padding:0%;
+        margin:0;
+    }
+
+    .clients-content-desc{
+        max-width: 100%;
+        color: #4a5562;
+        font-size: 18px;
+    }
+
+    .clients-content-title{
+        font-size: 25px;
+    }
+    
+   
+    
+}

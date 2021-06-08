@@ -1,0 +1,139 @@
+.home-container{
+    width:100vw;
+    height:75vh;
+}
+
+.slider{
+    width: 100vw !important;
+    height: 80% !important;
+}
+
+.home-content-lg{
+    display: flex;
+    width: 100vw;
+    height: 75vh !important;
+    flex-direction: row;
+}
+.home-content-md{
+    display: none;
+    width: 100vw;
+    flex-direction: row;
+}
+.home-content-sm{
+    display: none;
+    width: 100vw;
+}
+
+.carousel-dots{
+    margin-top: -50px;
+    z-index: 999;
+    position: relative;
+}
+
+.img-content{
+    width:33.3333333333%;
+    height:100% ;
+    background-position: center;
+    background-size: cover;
+    padding: 0px !important;
+}
+
+.img-shade-container{
+    background-color:rgba(40, 41, 54,0.5);
+    height: 100%;
+    width: 100%;
+    transition: background-color 200ms ease-in;
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding:30px;
+}
+
+
+
+.img-shade-container:hover{
+    background-color: rgba(40, 41, 54, 0);
+}
+
+.img-shade-container p{
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform :uppercase 
+}
+.carousel-dots button{
+    color: white !important;
+}
+
+
+@media screen and (orientation: landscape) and (max-width: 768px)  {
+    .home-container{
+        width:100vw;
+        height:100vh !important;
+    }
+
+    .slider{
+        width: 100vw !important;
+        height: 100vh!important;
+    }
+    .home-content-lg{
+        display: none
+    }
+
+    .home-content-md{
+        display: flex;
+        min-height: 100vh !important;
+        background-color: aqua;
+    }
+
+    .home-content-sm{
+        display: none;
+    }
+    .img-content{
+        width:50%;
+    }
+  }
+
+
+@media only screen and (max-width: 768px) {
+    .home-container{
+        width:100vw;
+        height:70vh;
+    }
+    .home-content-lg{
+        display: none
+    }
+    .home-content-md{
+        display: flex;
+        height: 70vh !important;
+    }
+
+    .home-content-sm{
+        display: none;
+    }
+    .img-content{
+        width:50%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .home-container{
+        width:100vw;
+        height: 50vh;
+    }
+    .home-content-lg{
+        display: none
+    }
+
+    .home-content-md{
+        display: none;
+    }
+    .home-content-sm{
+        display: flex;
+        height: 50vh !important;
+    }
+    .img-content{
+        width:100%;
+    }
+}

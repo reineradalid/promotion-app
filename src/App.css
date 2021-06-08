@@ -1,0 +1,182 @@
+
+@import '~antd/dist/antd.css'; 
+
+
+.App {
+  text-align: center;
+}
+
+
+body{
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px;
+  margin: 0px;
+
+}
+
+#Navs{
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding:5px;
+  top: 0px;
+  align-items: center;
+  transition: color 1000ms ease-in;
+  z-index: 999;
+}
+
+.carousel-dots{
+  z-index: 100 !important;
+}
+
+#NavsMobile{
+  display: none;
+}
+
+.burger-container{
+  display: none;
+  width: 100%;
+  padding: 30px;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+
+.burger-line{
+  height: 3px;
+  width:35px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+.logo{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navList{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+
+
+}
+#navItem{
+  color: #fff;
+  font-size:16px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+#bs-example-navbar-collapse-1{
+  width:60vw;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  height: 100%;
+  
+}
+
+
+#bs-example-navbar-collapse-1 img{
+  max-width: 150px;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  #Navs{
+    display:none;
+  }
+
+  #NavsMobile{
+    display:flex;
+    width:100% !important;
+  }
+  
+.burger-container{
+  display:flex;
+}
+
+#bs-example-navbar-collapse-1{
+  width:100% !important;
+  display:flex;
+  flex-direction: column !important;
+  margin: 0px;
+  height: 100%;
+  padding: 0;
+  
+}
+
+.logo{
+  width: 100% !important;
+  height:auto!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.logo > .logo_img{
+  height: 0 auto;
+  max-width: 80px !important;
+}
+
+
+#navList{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  list-style: none;
+  height: 100%;
+  padding:0;
+}
+
+#navItem-mobile{
+  /* color: #fff !important; */
+  color: #191919;
+  font-size:20px;
+  margin-bottom: 0px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+}
+
+@media only screen and (max-width: 540px) {
+  .burger-line{
+    height: 3px;
+    width:25px;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+
+  .burger-container{
+    padding: 20px;
+  }
+
+  
+}
